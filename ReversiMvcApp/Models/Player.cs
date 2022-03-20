@@ -10,6 +10,6 @@ namespace ReversiMvcApp.Models
         
         public int GamesWon { get; set; }
         public int GamesLost { get; set; }
-        public int GamesEqual { get; set; }
+        public int GamesDraw { get; set; }
     }
 }
