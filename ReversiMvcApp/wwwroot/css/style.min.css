@@ -1,0 +1,64 @@
+.game-container {
+  position: relative;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+}
+.game-container .spinner {
+  display: none;
+}
+.game-container.loading .spinner {
+  display: block;
+  z-index: 1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.game-container.loading .container-grid {
+  filter: blur(5px);
+  opacity: 0.75;
+}
+
+.container-grid {
+  transition: 200ms all ease-in-out;
+  display: grid;
+  aspect-ratio: 1/1;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 0 0;
+  grid-template-areas: ". . . . . . . ." ". . . . . . . ." ". . . . . . . ." ". . . . . . . ." ". . . . . . . ." ". . . . . . . ." ". . . . . . . ." ". . . . . . . .";
+}
+.container-grid > div {
+  border: 1px solid black;
+  background-color: green;
+}
+.container-grid > div.odd {
+  background-color: lightgreen;
+}
+.container-grid > div.active {
+  position: relative;
+}
+.container-grid > div.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  width: 90%;
+  height: 90%;
+}
+.container-grid > div.active.black::after {
+  background: black;
+}
+.container-grid > div.active.white::after {
+  background: white;
+}
+.alert svg {
+  max-width: 32px;
+  max-height: 32px;
+}
+
+.a {
+  font-size: 12px;
+}

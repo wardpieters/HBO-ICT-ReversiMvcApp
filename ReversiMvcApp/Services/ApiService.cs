@@ -16,9 +16,11 @@ namespace ReversiMvcApp.Services
     public class ApiService
     {
         private readonly HttpClient _client;
+        public readonly string ApiUrl;
 
         public ApiService(string uri)
         {
+            ApiUrl = uri;
             _client = new HttpClient();
             _client.BaseAddress = new Uri(uri);
         }

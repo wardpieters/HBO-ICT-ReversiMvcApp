@@ -35,9 +35,59 @@
         </dd>
     </dl>
 </div>
+<div class="game-container loading">
+    <div class="spinner">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div id="game_board" class="container-grid">
+        @for (int x = 1; x <= 8; x++)
+        {
+            @for (int y = 1; y <= 8; y++)
+            {
+                string className;
+
+                if (y % 2 == 0)
+                {
+                    if (x % 2 == 0)
+                    {
+                        className = "odd";
+                    }
+                    else
+                    {
+                        className = "even";
+                    }
+                }
+                else
+                {
+                    if (x % 2 == 0)
+                    {
+                        className = "even";
+                    }
+                    else
+                    {
+                        className = "odd";
+                    }
+                }
+
+                <div class="@className"></div>
+            }
+        }
+    </div>
+</div>
 <div>
     <form asp-action="LeaveGame" method="post">
         <input name="token" type="hidden" value="@Model.Token"/>
-        <input type="submit" value="Leave"/>
+        <p id="skip_turn" class="mb-0 d-inline-block btn btn-info">Beurt overslaan</p>
+        <input type="submit" value="Leave" class="btn btn-danger"/>
     </form>
 </div>
+
+<script>
+$(() => {
+    Game.Reversi.init('@ViewBag.ApiUrl', '@Model.Token', () => {
+        $('.game-container').removeClass('loading');
+    })
+})
+</script>

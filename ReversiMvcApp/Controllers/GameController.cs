@@ -47,6 +47,8 @@ namespace ReversiMvcApp.Controllers
             
             var response = await _apiService.Join(id, User.GetId());
 
+            ViewData["ApiUrl"] = _apiService.ApiUrl;
+
             return await this.ReturnViewOrError(response);
         }
 
