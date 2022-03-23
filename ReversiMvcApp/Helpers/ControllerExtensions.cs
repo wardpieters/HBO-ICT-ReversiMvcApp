@@ -1,6 +1,6 @@
-using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace ReversiMvcApp.Helpers
 {
@@ -10,7 +10,9 @@ namespace ReversiMvcApp.Helpers
         {
             if (response.HasError())
             {
-                return controller.NotFound(await response.GetError());
+                string errorMessage = await response.GetError();
+                controller.ViewBag.ErrorMessage = JsonConvert.DeserializeObject<dynamic>(errorMessage);
+                return controller.View();
             }
 
             return controller.View(await response.GetData());

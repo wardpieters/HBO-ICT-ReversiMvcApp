@@ -9,17 +9,25 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div>
+        <h4>Game</h4>
+        <hr />
+        <div class="alert alert-danger">
+                <p class="mb-0">Er is een fout opgetreden: @ViewBag.ErrorMessage.message</p>
+            </div>
+    </div>
+    
+    return;
+}
+
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Player1Token)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Player2Token)
             </th>
             <th></th>
         </tr>
@@ -29,12 +37,6 @@
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Player1Token)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Player2Token)
                     </td>
                     <td>
                         <a asp-action="Details" asp-route-id="@item.Token">Join</a>

@@ -1,14 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ReversiMvcApp.Data;
 using ReversiMvcApp.Helpers;
 using ReversiMvcApp.Models;
 using ReversiMvcApp.Services;
@@ -100,7 +95,7 @@ namespace ReversiMvcApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Player1Token,Description")] Game game)
+        public IActionResult Edit(string id, [Bind("Player1Token,Description")] Game game)
         {
             if (id != game.Token)
             {
@@ -131,7 +126,7 @@ namespace ReversiMvcApp.Controllers
         }
 
         // GET: Game/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public IActionResult Delete(string id)
         {
             if (id == null)
             {
@@ -151,7 +146,7 @@ namespace ReversiMvcApp.Controllers
         // POST: Game/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public IActionResult DeleteConfirmed(string id)
         {
             // var game = await _apiService.Game.FindAsync(id);
             // _apiService.Game.Remove(game);
