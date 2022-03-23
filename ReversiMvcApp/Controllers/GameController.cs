@@ -48,6 +48,9 @@ namespace ReversiMvcApp.Controllers
             var response = await _apiService.Join(id, User.GetId());
 
             ViewData["ApiUrl"] = _apiService.ApiUrl;
+            
+            ClaimsPrincipal currentUser = User;
+            ViewData["CurrentUserId"] = currentUser.FindFirstValue(ClaimTypes.NameIdentifier);
 
             return await this.ReturnViewOrError(response);
         }

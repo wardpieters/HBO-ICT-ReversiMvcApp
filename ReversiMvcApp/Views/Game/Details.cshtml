@@ -1,3 +1,4 @@
+@using System.Security.Claims
 @model ReversiMvcApp.Models.Game
 
 @{
@@ -15,23 +16,6 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Description)
-        </dd>
-    </dl>
-    
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Player1Token)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Player1Token)
-        </dd>
-    </dl>
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Player2Token)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Player2Token)
         </dd>
     </dl>
 </div>
@@ -86,7 +70,10 @@
 
 <script>
 $(() => {
-    Game.Reversi.init('@ViewBag.ApiUrl', '@Model.Token', () => {
+    Game.Reversi.init('@ViewBag.ApiUrl', {
+        gameToken: '@Model.Token',
+        playerToken: '@ViewBag.CurrentUserId',
+    }, () => {
         $('.game-container').removeClass('loading');
     })
 })

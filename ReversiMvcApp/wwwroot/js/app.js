@@ -1,8 +1,16 @@
 "use strict";
 
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e31) { throw _e31; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e32) { didErr = true; err = _e32; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
 
 function _get() { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(arguments.length < 3 ? target : receiver); } return desc.value; }; } return _get.apply(this, arguments); }
 
@@ -14041,6 +14049,3275 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
     Tooltip: $e
   };
 });
+var t, e;
+t = self, e = function e() {
+  return function () {
+    var t = {
+      d: function d(e, s) {
+        for (var n in s) {
+          t.o(s, n) && !t.o(e, n) && Object.defineProperty(e, n, {
+            enumerable: !0,
+            get: s[n]
+          });
+        }
+      }
+    };
+    t.g = function () {
+      if ("object" == (typeof globalThis === "undefined" ? "undefined" : _typeof(globalThis))) return globalThis;
+
+      try {
+        return this || new Function("return this")();
+      } catch (t) {
+        if ("object" == (typeof window === "undefined" ? "undefined" : _typeof(window))) return window;
+      }
+    }(), t.o = function (t, e) {
+      return Object.prototype.hasOwnProperty.call(t, e);
+    }, t.r = function (t) {
+      "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(t, Symbol.toStringTag, {
+        value: "Module"
+      }), Object.defineProperty(t, "t", {
+        value: !0
+      });
+    };
+    var e,
+        s = {};
+    t.r(s), t.d(s, {
+      AbortError: function AbortError() {
+        return r;
+      },
+      DefaultHttpClient: function DefaultHttpClient() {
+        return H;
+      },
+      HttpClient: function HttpClient() {
+        return d;
+      },
+      HttpError: function HttpError() {
+        return n;
+      },
+      HttpResponse: function HttpResponse() {
+        return u;
+      },
+      HttpTransportType: function HttpTransportType() {
+        return M;
+      },
+      HubConnection: function HubConnection() {
+        return N;
+      },
+      HubConnectionBuilder: function HubConnectionBuilder() {
+        return Q;
+      },
+      HubConnectionState: function HubConnectionState() {
+        return R;
+      },
+      JsonHubProtocol: function JsonHubProtocol() {
+        return G;
+      },
+      LogLevel: function LogLevel() {
+        return e;
+      },
+      MessageType: function MessageType() {
+        return A;
+      },
+      NullLogger: function NullLogger() {
+        return f;
+      },
+      Subject: function Subject() {
+        return U;
+      },
+      TimeoutError: function TimeoutError() {
+        return i;
+      },
+      TransferFormat: function TransferFormat() {
+        return W;
+      },
+      VERSION: function VERSION() {
+        return p;
+      }
+    });
+
+    var n = /*#__PURE__*/function (_Error) {
+      _inherits(n, _Error);
+
+      var _super13 = _createSuper(n);
+
+      function n(t, e) {
+        var _this49;
+
+        _classCallCheck(this, n);
+
+        var s = (this instanceof n ? this.constructor : void 0).prototype;
+        _this49 = _super13.call(this, "".concat(t, ": Status code '").concat(e, "'")), _this49.statusCode = e, _this49.__proto__ = s;
+        return _this49;
+      }
+
+      return _createClass(n);
+    }( /*#__PURE__*/_wrapNativeSuper(Error));
+
+    var i = /*#__PURE__*/function (_Error2) {
+      _inherits(i, _Error2);
+
+      var _super14 = _createSuper(i);
+
+      function i() {
+        var _this50;
+
+        var t = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "A timeout occurred.";
+
+        _classCallCheck(this, i);
+
+        var e = (this instanceof i ? this.constructor : void 0).prototype;
+        _this50 = _super14.call(this, t), _this50.__proto__ = e;
+        return _this50;
+      }
+
+      return _createClass(i);
+    }( /*#__PURE__*/_wrapNativeSuper(Error));
+
+    var r = /*#__PURE__*/function (_Error3) {
+      _inherits(r, _Error3);
+
+      var _super15 = _createSuper(r);
+
+      function r() {
+        var _this51;
+
+        var t = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "An abort occurred.";
+
+        _classCallCheck(this, r);
+
+        var e = (this instanceof r ? this.constructor : void 0).prototype;
+        _this51 = _super15.call(this, t), _this51.__proto__ = e;
+        return _this51;
+      }
+
+      return _createClass(r);
+    }( /*#__PURE__*/_wrapNativeSuper(Error));
+
+    var o = /*#__PURE__*/function (_Error4) {
+      _inherits(o, _Error4);
+
+      var _super16 = _createSuper(o);
+
+      function o(t, e) {
+        var _this52;
+
+        _classCallCheck(this, o);
+
+        var s = (this instanceof o ? this.constructor : void 0).prototype;
+        _this52 = _super16.call(this, t), _this52.transport = e, _this52.errorType = "UnsupportedTransportError", _this52.__proto__ = s;
+        return _this52;
+      }
+
+      return _createClass(o);
+    }( /*#__PURE__*/_wrapNativeSuper(Error));
+
+    var h = /*#__PURE__*/function (_Error5) {
+      _inherits(h, _Error5);
+
+      var _super17 = _createSuper(h);
+
+      function h(t, e) {
+        var _this53;
+
+        _classCallCheck(this, h);
+
+        var s = (this instanceof h ? this.constructor : void 0).prototype;
+        _this53 = _super17.call(this, t), _this53.transport = e, _this53.errorType = "DisabledTransportError", _this53.__proto__ = s;
+        return _this53;
+      }
+
+      return _createClass(h);
+    }( /*#__PURE__*/_wrapNativeSuper(Error));
+
+    var c = /*#__PURE__*/function (_Error6) {
+      _inherits(c, _Error6);
+
+      var _super18 = _createSuper(c);
+
+      function c(t, e) {
+        var _this54;
+
+        _classCallCheck(this, c);
+
+        var s = (this instanceof c ? this.constructor : void 0).prototype;
+        _this54 = _super18.call(this, t), _this54.transport = e, _this54.errorType = "FailedToStartTransportError", _this54.__proto__ = s;
+        return _this54;
+      }
+
+      return _createClass(c);
+    }( /*#__PURE__*/_wrapNativeSuper(Error));
+
+    var a = /*#__PURE__*/function (_Error7) {
+      _inherits(a, _Error7);
+
+      var _super19 = _createSuper(a);
+
+      function a(t) {
+        var _this55;
+
+        _classCallCheck(this, a);
+
+        var e = (this instanceof a ? this.constructor : void 0).prototype;
+        _this55 = _super19.call(this, t), _this55.errorType = "FailedToNegotiateWithServerError", _this55.__proto__ = e;
+        return _this55;
+      }
+
+      return _createClass(a);
+    }( /*#__PURE__*/_wrapNativeSuper(Error));
+
+    var l = /*#__PURE__*/function (_Error8) {
+      _inherits(l, _Error8);
+
+      var _super20 = _createSuper(l);
+
+      function l(t, e) {
+        var _this56;
+
+        _classCallCheck(this, l);
+
+        var s = (this instanceof l ? this.constructor : void 0).prototype;
+        _this56 = _super20.call(this, t), _this56.innerErrors = e, _this56.__proto__ = s;
+        return _this56;
+      }
+
+      return _createClass(l);
+    }( /*#__PURE__*/_wrapNativeSuper(Error));
+
+    var u = /*#__PURE__*/_createClass(function u(t, e, s) {
+      _classCallCheck(this, u);
+
+      this.statusCode = t, this.statusText = e, this.content = s;
+    });
+
+    var d = /*#__PURE__*/function () {
+      function d() {
+        _classCallCheck(this, d);
+      }
+
+      _createClass(d, [{
+        key: "get",
+        value: function get(t, e) {
+          return this.send(_objectSpread(_objectSpread({}, e), {}, {
+            method: "GET",
+            url: t
+          }));
+        }
+      }, {
+        key: "post",
+        value: function post(t, e) {
+          return this.send(_objectSpread(_objectSpread({}, e), {}, {
+            method: "POST",
+            url: t
+          }));
+        }
+      }, {
+        key: "delete",
+        value: function _delete(t, e) {
+          return this.send(_objectSpread(_objectSpread({}, e), {}, {
+            method: "DELETE",
+            url: t
+          }));
+        }
+      }, {
+        key: "getCookieString",
+        value: function getCookieString(t) {
+          return "";
+        }
+      }]);
+
+      return d;
+    }();
+
+    !function (t) {
+      t[t.Trace = 0] = "Trace", t[t.Debug = 1] = "Debug", t[t.Information = 2] = "Information", t[t.Warning = 3] = "Warning", t[t.Error = 4] = "Error", t[t.Critical = 5] = "Critical", t[t.None = 6] = "None";
+    }(e || (e = {}));
+
+    var f = /*#__PURE__*/function () {
+      function f() {
+        _classCallCheck(this, f);
+      }
+
+      _createClass(f, [{
+        key: "log",
+        value: function log(t, e) {}
+      }]);
+
+      return f;
+    }();
+
+    f.instance = new f();
+    var p = "6.0.3";
+
+    var w = /*#__PURE__*/function () {
+      function w() {
+        _classCallCheck(this, w);
+      }
+
+      _createClass(w, null, [{
+        key: "isRequired",
+        value: function isRequired(t, e) {
+          if (null == t) throw new Error("The '".concat(e, "' argument is required."));
+        }
+      }, {
+        key: "isNotEmpty",
+        value: function isNotEmpty(t, e) {
+          if (!t || t.match(/^\s*$/)) throw new Error("The '".concat(e, "' argument should not be empty."));
+        }
+      }, {
+        key: "isIn",
+        value: function isIn(t, e, s) {
+          if (!(t in e)) throw new Error("Unknown ".concat(s, " value: ").concat(t, "."));
+        }
+      }]);
+
+      return w;
+    }();
+
+    var g = /*#__PURE__*/function () {
+      function g() {
+        _classCallCheck(this, g);
+      }
+
+      _createClass(g, null, [{
+        key: "isBrowser",
+        get: function get() {
+          return "object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && "object" == _typeof(window.document);
+        }
+      }, {
+        key: "isWebWorker",
+        get: function get() {
+          return "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && "importScripts" in self;
+        }
+      }, {
+        key: "isReactNative",
+        get: function get() {
+          return "object" == (typeof window === "undefined" ? "undefined" : _typeof(window)) && void 0 === window.document;
+        }
+      }, {
+        key: "isNode",
+        get: function get() {
+          return !this.isBrowser && !this.isWebWorker && !this.isReactNative;
+        }
+      }]);
+
+      return g;
+    }();
+
+    function y(t, e) {
+      var s = "";
+      return m(t) ? (s = "Binary data of length ".concat(t.byteLength), e && (s += ". Content: '".concat(function (t) {
+        var e = new Uint8Array(t);
+        var s = "";
+        return e.forEach(function (t) {
+          s += "0x".concat(t < 16 ? "0" : "").concat(t.toString(16), " ");
+        }), s.substr(0, s.length - 1);
+      }(t), "'"))) : "string" == typeof t && (s = "String data of length ".concat(t.length), e && (s += ". Content: '".concat(t, "'"))), s;
+    }
+
+    function m(t) {
+      return t && "undefined" != typeof ArrayBuffer && (t instanceof ArrayBuffer || t.constructor && "ArrayBuffer" === t.constructor.name);
+    }
+
+    function b(_x5, _x6, _x7, _x8, _x9, _x10, _x11) {
+      return _b.apply(this, arguments);
+    }
+
+    function _b() {
+      _b = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee22(t, s, n, i, r, o, h) {
+        var c, _t35, _$11, _$12, a, l, u, d;
+
+        return regeneratorRuntime.wrap(function _callee22$(_context22) {
+          while (1) {
+            switch (_context22.prev = _context22.next) {
+              case 0:
+                c = {};
+
+                if (!r) {
+                  _context22.next = 6;
+                  break;
+                }
+
+                _context22.next = 4;
+                return r();
+
+              case 4:
+                _t35 = _context22.sent;
+                _t35 && (c = {
+                  Authorization: "Bearer ".concat(_t35)
+                });
+
+              case 6:
+                _$11 = $(), _$12 = _slicedToArray(_$11, 2), a = _$12[0], l = _$12[1];
+                c[a] = l, t.log(e.Trace, "(".concat(s, " transport) sending data. ").concat(y(o, h.logMessageContent), "."));
+                u = m(o) ? "arraybuffer" : "text";
+                _context22.next = 11;
+                return n.post(i, {
+                  content: o,
+                  headers: _objectSpread(_objectSpread({}, c), h.headers),
+                  responseType: u,
+                  timeout: h.timeout,
+                  withCredentials: h.withCredentials
+                });
+
+              case 11:
+                d = _context22.sent;
+                t.log(e.Trace, "(".concat(s, " transport) request complete. Response status: ").concat(d.statusCode, "."));
+
+              case 13:
+              case "end":
+                return _context22.stop();
+            }
+          }
+        }, _callee22);
+      }));
+      return _b.apply(this, arguments);
+    }
+
+    var v = /*#__PURE__*/function () {
+      function v(t, e) {
+        _classCallCheck(this, v);
+
+        this.i = t, this.h = e;
+      }
+
+      _createClass(v, [{
+        key: "dispose",
+        value: function dispose() {
+          var t = this.i.observers.indexOf(this.h);
+          t > -1 && this.i.observers.splice(t, 1), 0 === this.i.observers.length && this.i.cancelCallback && this.i.cancelCallback()["catch"](function (t) {});
+        }
+      }]);
+
+      return v;
+    }();
+
+    var E = /*#__PURE__*/function () {
+      function E(t) {
+        _classCallCheck(this, E);
+
+        this.l = t, this.out = console;
+      }
+
+      _createClass(E, [{
+        key: "log",
+        value: function log(t, s) {
+          if (t >= this.l) {
+            var _n5 = "[".concat(new Date().toISOString(), "] ").concat(e[t], ": ").concat(s);
+
+            switch (t) {
+              case e.Critical:
+              case e.Error:
+                this.out.error(_n5);
+                break;
+
+              case e.Warning:
+                this.out.warn(_n5);
+                break;
+
+              case e.Information:
+                this.out.info(_n5);
+                break;
+
+              default:
+                this.out.log(_n5);
+            }
+          }
+        }
+      }]);
+
+      return E;
+    }();
+
+    function $() {
+      var t = "X-SignalR-User-Agent";
+      return g.isNode && (t = "User-Agent"), [t, C(p, S(), g.isNode ? "NodeJS" : "Browser", k())];
+    }
+
+    function C(t, e, s, n) {
+      var i = "Microsoft SignalR/";
+      var r = t.split(".");
+      return i += "".concat(r[0], ".").concat(r[1]), i += " (".concat(t, "; "), i += e && "" !== e ? "".concat(e, "; ") : "Unknown OS; ", i += "".concat(s), i += n ? "; ".concat(n) : "; Unknown Runtime Version", i += ")", i;
+    }
+
+    function S() {
+      if (!g.isNode) return "";
+
+      switch (process.platform) {
+        case "win32":
+          return "Windows NT";
+
+        case "darwin":
+          return "macOS";
+
+        case "linux":
+          return "Linux";
+
+        default:
+          return process.platform;
+      }
+    }
+
+    function k() {
+      if (g.isNode) return process.versions.node;
+    }
+
+    function P(t) {
+      return t.stack ? t.stack : t.message ? t.message : "".concat(t);
+    }
+
+    var T = /*#__PURE__*/function (_d2) {
+      _inherits(T, _d2);
+
+      var _super21 = _createSuper(T);
+
+      function T(e) {
+        var _this57;
+
+        _classCallCheck(this, T);
+
+        if (_this57 = _super21.call(this), _this57.u = e, "undefined" == typeof fetch) {
+          var _t16 = require;
+          _this57.p = new (_t16("tough-cookie").CookieJar)(), _this57.m = _t16("node-fetch"), _this57.m = _t16("fetch-cookie")(_this57.m, _this57.p);
+        } else _this57.m = fetch.bind(function () {
+          if ("undefined" != typeof globalThis) return globalThis;
+          if ("undefined" != typeof self) return self;
+          if ("undefined" != typeof window) return window;
+          if (void 0 !== t.g) return t.g;
+          throw new Error("could not find global");
+        }());
+
+        if ("undefined" == typeof AbortController) {
+          var _t17 = require;
+          _this57.v = _t17("abort-controller");
+        } else _this57.v = AbortController;
+
+        return _possibleConstructorReturn(_this57);
+      }
+
+      _createClass(T, [{
+        key: "send",
+        value: function () {
+          var _send = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(t) {
+            var _this58 = this;
+
+            var s, o, h, c, _n6, _t18, a, l;
+
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    if (!(t.abortSignal && t.abortSignal.aborted)) {
+                      _context.next = 2;
+                      break;
+                    }
+
+                    throw new r();
+
+                  case 2:
+                    if (t.method) {
+                      _context.next = 4;
+                      break;
+                    }
+
+                    throw new Error("No method defined.");
+
+                  case 4:
+                    if (t.url) {
+                      _context.next = 6;
+                      break;
+                    }
+
+                    throw new Error("No url defined.");
+
+                  case 6:
+                    s = new this.v();
+                    t.abortSignal && (t.abortSignal.onabort = function () {
+                      s.abort(), o = new r();
+                    });
+                    c = null;
+
+                    if (t.timeout) {
+                      _n6 = t.timeout;
+                      c = setTimeout(function () {
+                        s.abort(), _this58.u.log(e.Warning, "Timeout from HTTP request."), o = new i();
+                      }, _n6);
+                    }
+
+                    _context.prev = 10;
+                    _context.next = 13;
+                    return this.m(t.url, {
+                      body: t.content,
+                      cache: "no-cache",
+                      credentials: !0 === t.withCredentials ? "include" : "same-origin",
+                      headers: _objectSpread({
+                        "Content-Type": "text/plain;charset=UTF-8",
+                        "X-Requested-With": "XMLHttpRequest"
+                      }, t.headers),
+                      method: t.method,
+                      mode: "cors",
+                      redirect: "follow",
+                      signal: s.signal
+                    });
+
+                  case 13:
+                    h = _context.sent;
+                    _context.next = 21;
+                    break;
+
+                  case 16:
+                    _context.prev = 16;
+                    _context.t0 = _context["catch"](10);
+
+                    if (!o) {
+                      _context.next = 20;
+                      break;
+                    }
+
+                    throw o;
+
+                  case 20:
+                    throw this.u.log(e.Warning, "Error from HTTP request. ".concat(_context.t0, ".")), _context.t0;
+
+                  case 21:
+                    _context.prev = 21;
+                    c && clearTimeout(c), t.abortSignal && (t.abortSignal.onabort = null);
+                    return _context.finish(21);
+
+                  case 24:
+                    if (h.ok) {
+                      _context.next = 29;
+                      break;
+                    }
+
+                    _context.next = 27;
+                    return I(h, "text");
+
+                  case 27:
+                    _t18 = _context.sent;
+                    throw new n(_t18 || h.statusText, h.status);
+
+                  case 29:
+                    a = I(h, t.responseType);
+                    _context.next = 32;
+                    return a;
+
+                  case 32:
+                    l = _context.sent;
+                    return _context.abrupt("return", new u(h.status, h.statusText, l));
+
+                  case 34:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this, [[10, 16, 21, 24]]);
+          }));
+
+          function send(_x12) {
+            return _send.apply(this, arguments);
+          }
+
+          return send;
+        }()
+      }, {
+        key: "getCookieString",
+        value: function getCookieString(t) {
+          var e = "";
+          return g.isNode && this.p && this.p.getCookies(t, function (t, s) {
+            return e = s.join("; ");
+          }), e;
+        }
+      }]);
+
+      return T;
+    }(d);
+
+    function I(t, e) {
+      var s;
+
+      switch (e) {
+        case "arraybuffer":
+          s = t.arrayBuffer();
+          break;
+
+        case "text":
+          s = t.text();
+          break;
+
+        case "blob":
+        case "document":
+        case "json":
+          throw new Error("".concat(e, " is not supported."));
+
+        default:
+          s = t.text();
+      }
+
+      return s;
+    }
+
+    var _ = /*#__PURE__*/function (_d3) {
+      _inherits(_, _d3);
+
+      var _super22 = _createSuper(_);
+
+      function _(t) {
+        var _this59;
+
+        _classCallCheck(this, _);
+
+        _this59 = _super22.call(this), _this59.u = t;
+        return _this59;
+      }
+
+      _createClass(_, [{
+        key: "send",
+        value: function send(t) {
+          var _this60 = this;
+
+          return t.abortSignal && t.abortSignal.aborted ? Promise.reject(new r()) : t.method ? t.url ? new Promise(function (s, o) {
+            var h = new XMLHttpRequest();
+            h.open(t.method, t.url, !0), h.withCredentials = void 0 === t.withCredentials || t.withCredentials, h.setRequestHeader("X-Requested-With", "XMLHttpRequest"), h.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+            var c = t.headers;
+            c && Object.keys(c).forEach(function (t) {
+              h.setRequestHeader(t, c[t]);
+            }), t.responseType && (h.responseType = t.responseType), t.abortSignal && (t.abortSignal.onabort = function () {
+              h.abort(), o(new r());
+            }), t.timeout && (h.timeout = t.timeout), h.onload = function () {
+              t.abortSignal && (t.abortSignal.onabort = null), h.status >= 200 && h.status < 300 ? s(new u(h.status, h.statusText, h.response || h.responseText)) : o(new n(h.response || h.responseText || h.statusText, h.status));
+            }, h.onerror = function () {
+              _this60.u.log(e.Warning, "Error from HTTP request. ".concat(h.status, ": ").concat(h.statusText, ".")), o(new n(h.statusText, h.status));
+            }, h.ontimeout = function () {
+              _this60.u.log(e.Warning, "Timeout from HTTP request."), o(new i());
+            }, h.send(t.content || "");
+          }) : Promise.reject(new Error("No url defined.")) : Promise.reject(new Error("No method defined."));
+        }
+      }]);
+
+      return _;
+    }(d);
+
+    var H = /*#__PURE__*/function (_d4) {
+      _inherits(H, _d4);
+
+      var _super23 = _createSuper(H);
+
+      function H(t) {
+        var _this61;
+
+        _classCallCheck(this, H);
+
+        if (_this61 = _super23.call(this), "undefined" != typeof fetch || g.isNode) _this61.$ = new T(t);else {
+          if ("undefined" == typeof XMLHttpRequest) throw new Error("No usable HttpClient found.");
+          _this61.$ = new _(t);
+        }
+        return _possibleConstructorReturn(_this61);
+      }
+
+      _createClass(H, [{
+        key: "send",
+        value: function send(t) {
+          return t.abortSignal && t.abortSignal.aborted ? Promise.reject(new r()) : t.method ? t.url ? this.$.send(t) : Promise.reject(new Error("No url defined.")) : Promise.reject(new Error("No method defined."));
+        }
+      }, {
+        key: "getCookieString",
+        value: function getCookieString(t) {
+          return this.$.getCookieString(t);
+        }
+      }]);
+
+      return H;
+    }(d);
+
+    var D = /*#__PURE__*/function () {
+      function D() {
+        _classCallCheck(this, D);
+      }
+
+      _createClass(D, null, [{
+        key: "write",
+        value: function write(t) {
+          return "".concat(t).concat(D.RecordSeparator);
+        }
+      }, {
+        key: "parse",
+        value: function parse(t) {
+          if (t[t.length - 1] !== D.RecordSeparator) throw new Error("Message is incomplete.");
+          var e = t.split(D.RecordSeparator);
+          return e.pop(), e;
+        }
+      }]);
+
+      return D;
+    }();
+
+    D.RecordSeparatorCode = 30, D.RecordSeparator = String.fromCharCode(D.RecordSeparatorCode);
+
+    var x = /*#__PURE__*/function () {
+      function x() {
+        _classCallCheck(this, x);
+      }
+
+      _createClass(x, [{
+        key: "writeHandshakeRequest",
+        value: function writeHandshakeRequest(t) {
+          return D.write(JSON.stringify(t));
+        }
+      }, {
+        key: "parseHandshakeResponse",
+        value: function parseHandshakeResponse(t) {
+          var e, s;
+
+          if (m(t)) {
+            var _n7 = new Uint8Array(t),
+                _i12 = _n7.indexOf(D.RecordSeparatorCode);
+
+            if (-1 === _i12) throw new Error("Message is incomplete.");
+
+            var _r3 = _i12 + 1;
+
+            e = String.fromCharCode.apply(null, Array.prototype.slice.call(_n7.slice(0, _r3))), s = _n7.byteLength > _r3 ? _n7.slice(_r3).buffer : null;
+          } else {
+            var _n8 = t,
+                _i13 = _n8.indexOf(D.RecordSeparator);
+
+            if (-1 === _i13) throw new Error("Message is incomplete.");
+
+            var _r4 = _i13 + 1;
+
+            e = _n8.substring(0, _r4), s = _n8.length > _r4 ? _n8.substring(_r4) : null;
+          }
+
+          var n = D.parse(e),
+              i = JSON.parse(n[0]);
+          if (i.type) throw new Error("Expected a handshake response from the server.");
+          return [s, i];
+        }
+      }]);
+
+      return x;
+    }();
+
+    var A, R;
+    !function (t) {
+      t[t.Invocation = 1] = "Invocation", t[t.StreamItem = 2] = "StreamItem", t[t.Completion = 3] = "Completion", t[t.StreamInvocation = 4] = "StreamInvocation", t[t.CancelInvocation = 5] = "CancelInvocation", t[t.Ping = 6] = "Ping", t[t.Close = 7] = "Close";
+    }(A || (A = {}));
+
+    var U = /*#__PURE__*/function () {
+      function U() {
+        _classCallCheck(this, U);
+
+        this.observers = [];
+      }
+
+      _createClass(U, [{
+        key: "next",
+        value: function next(t) {
+          var _iterator = _createForOfIteratorHelper(this.observers),
+              _step;
+
+          try {
+            for (_iterator.s(); !(_step = _iterator.n()).done;) {
+              var _e19 = _step.value;
+
+              _e19.next(t);
+            }
+          } catch (err) {
+            _iterator.e(err);
+          } finally {
+            _iterator.f();
+          }
+        }
+      }, {
+        key: "error",
+        value: function error(t) {
+          var _iterator2 = _createForOfIteratorHelper(this.observers),
+              _step2;
+
+          try {
+            for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+              var _e20 = _step2.value;
+              _e20.error && _e20.error(t);
+            }
+          } catch (err) {
+            _iterator2.e(err);
+          } finally {
+            _iterator2.f();
+          }
+        }
+      }, {
+        key: "complete",
+        value: function complete() {
+          var _iterator3 = _createForOfIteratorHelper(this.observers),
+              _step3;
+
+          try {
+            for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+              var _t19 = _step3.value;
+              _t19.complete && _t19.complete();
+            }
+          } catch (err) {
+            _iterator3.e(err);
+          } finally {
+            _iterator3.f();
+          }
+        }
+      }, {
+        key: "subscribe",
+        value: function subscribe(t) {
+          return this.observers.push(t), new v(this, t);
+        }
+      }]);
+
+      return U;
+    }();
+
+    !function (t) {
+      t.Disconnected = "Disconnected", t.Connecting = "Connecting", t.Connected = "Connected", t.Disconnecting = "Disconnecting", t.Reconnecting = "Reconnecting";
+    }(R || (R = {}));
+
+    var N = /*#__PURE__*/function () {
+      function N(t, s, n, i) {
+        var _this62 = this;
+
+        _classCallCheck(this, N);
+
+        this.C = 0, this.S = function () {
+          _this62.u.log(e.Warning, "The page is being frozen, this will likely lead to the connection being closed and messages being lost. For more information see the docs at https://docs.microsoft.com/aspnet/core/signalr/javascript-client#bsleep");
+        }, w.isRequired(t, "connection"), w.isRequired(s, "logger"), w.isRequired(n, "protocol"), this.serverTimeoutInMilliseconds = 3e4, this.keepAliveIntervalInMilliseconds = 15e3, this.u = s, this.k = n, this.connection = t, this.P = i, this.T = new x(), this.connection.onreceive = function (t) {
+          return _this62.I(t);
+        }, this.connection.onclose = function (t) {
+          return _this62._(t);
+        }, this.H = {}, this.D = {}, this.A = [], this.R = [], this.U = [], this.N = 0, this.L = !1, this.q = R.Disconnected, this.j = !1, this.M = this.k.writeMessage({
+          type: A.Ping
+        });
+      }
+
+      _createClass(N, [{
+        key: "state",
+        get: function get() {
+          return this.q;
+        }
+      }, {
+        key: "connectionId",
+        get: function get() {
+          return this.connection && this.connection.connectionId || null;
+        }
+      }, {
+        key: "baseUrl",
+        get: function get() {
+          return this.connection.baseUrl || "";
+        },
+        set: function set(t) {
+          if (this.q !== R.Disconnected && this.q !== R.Reconnecting) throw new Error("The HubConnection must be in the Disconnected or Reconnecting state to change the url.");
+          if (!t) throw new Error("The HubConnection url must be a valid url.");
+          this.connection.baseUrl = t;
+        }
+      }, {
+        key: "start",
+        value: function start() {
+          return this.W = this.O(), this.W;
+        }
+      }, {
+        key: "O",
+        value: function () {
+          var _O = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    if (!(this.q !== R.Disconnected)) {
+                      _context2.next = 2;
+                      break;
+                    }
+
+                    return _context2.abrupt("return", Promise.reject(new Error("Cannot start a HubConnection that is not in the 'Disconnected' state.")));
+
+                  case 2:
+                    this.q = R.Connecting, this.u.log(e.Debug, "Starting HubConnection.");
+                    _context2.prev = 3;
+                    _context2.next = 6;
+                    return this.F();
+
+                  case 6:
+                    g.isBrowser && window.document.addEventListener("freeze", this.S);
+                    this.q = R.Connected;
+                    this.j = !0;
+                    this.u.log(e.Debug, "HubConnection connected successfully.");
+                    _context2.next = 15;
+                    break;
+
+                  case 12:
+                    _context2.prev = 12;
+                    _context2.t0 = _context2["catch"](3);
+                    return _context2.abrupt("return", (this.q = R.Disconnected, this.u.log(e.Debug, "HubConnection failed to start successfully because of error '".concat(_context2.t0, "'.")), Promise.reject(_context2.t0)));
+
+                  case 15:
+                  case "end":
+                    return _context2.stop();
+                }
+              }
+            }, _callee2, this, [[3, 12]]);
+          }));
+
+          function O() {
+            return _O.apply(this, arguments);
+          }
+
+          return O;
+        }()
+      }, {
+        key: "F",
+        value: function () {
+          var _F = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+            var _this63 = this;
+
+            var t, _s8;
+
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    this.B = void 0, this.L = !1;
+                    t = new Promise(function (t, e) {
+                      _this63.X = t, _this63.J = e;
+                    });
+                    _context3.next = 4;
+                    return this.connection.start(this.k.transferFormat);
+
+                  case 4:
+                    _context3.prev = 4;
+                    _s8 = {
+                      protocol: this.k.name,
+                      version: this.k.version
+                    };
+                    this.u.log(e.Debug, "Sending handshake request.");
+                    _context3.next = 9;
+                    return this.V(this.T.writeHandshakeRequest(_s8));
+
+                  case 9:
+                    this.u.log(e.Information, "Using HubProtocol '".concat(this.k.name, "'."));
+                    this.G();
+                    this.K();
+                    this.Y();
+                    _context3.next = 15;
+                    return t;
+
+                  case 15:
+                    if (!this.B) {
+                      _context3.next = 17;
+                      break;
+                    }
+
+                    throw this.B;
+
+                  case 17:
+                    _context3.next = 27;
+                    break;
+
+                  case 19:
+                    _context3.prev = 19;
+                    _context3.t0 = _context3["catch"](4);
+                    this.u.log(e.Debug, "Hub handshake failed with error '".concat(_context3.t0, "' during start(). Stopping HubConnection."));
+                    this.G();
+                    this.Z();
+                    _context3.next = 26;
+                    return this.connection.stop(_context3.t0);
+
+                  case 26:
+                    throw _context3.t0;
+
+                  case 27:
+                  case "end":
+                    return _context3.stop();
+                }
+              }
+            }, _callee3, this, [[4, 19]]);
+          }));
+
+          function F() {
+            return _F.apply(this, arguments);
+          }
+
+          return F;
+        }()
+      }, {
+        key: "stop",
+        value: function () {
+          var _stop = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+            var t;
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+              while (1) {
+                switch (_context4.prev = _context4.next) {
+                  case 0:
+                    t = this.W;
+                    this.tt = this.et();
+                    _context4.next = 4;
+                    return this.tt;
+
+                  case 4:
+                    _context4.prev = 4;
+                    _context4.next = 7;
+                    return t;
+
+                  case 7:
+                    _context4.next = 11;
+                    break;
+
+                  case 9:
+                    _context4.prev = 9;
+                    _context4.t0 = _context4["catch"](4);
+
+                  case 11:
+                  case "end":
+                    return _context4.stop();
+                }
+              }
+            }, _callee4, this, [[4, 9]]);
+          }));
+
+          function stop() {
+            return _stop.apply(this, arguments);
+          }
+
+          return stop;
+        }()
+      }, {
+        key: "et",
+        value: function et(t) {
+          return this.q === R.Disconnected ? (this.u.log(e.Debug, "Call to HubConnection.stop(".concat(t, ") ignored because it is already in the disconnected state.")), Promise.resolve()) : this.q === R.Disconnecting ? (this.u.log(e.Debug, "Call to HttpConnection.stop(".concat(t, ") ignored because the connection is already in the disconnecting state.")), this.tt) : (this.q = R.Disconnecting, this.u.log(e.Debug, "Stopping HubConnection."), this.st ? (this.u.log(e.Debug, "Connection stopped during reconnect delay. Done reconnecting."), clearTimeout(this.st), this.st = void 0, this.nt(), Promise.resolve()) : (this.G(), this.Z(), this.B = t || new Error("The connection was stopped before the hub handshake could complete."), this.connection.stop(t)));
+        }
+      }, {
+        key: "stream",
+        value: function stream(t) {
+          var _this64 = this;
+
+          for (var _len = arguments.length, e = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+            e[_key - 1] = arguments[_key];
+          }
+
+          var _this$it = this.it(e),
+              _this$it2 = _slicedToArray(_this$it, 2),
+              s = _this$it2[0],
+              n = _this$it2[1],
+              i = this.rt(t, e, n);
+
+          var r;
+          var o = new U();
+          return o.cancelCallback = function () {
+            var t = _this64.ot(i.invocationId);
+
+            return delete _this64.H[i.invocationId], r.then(function () {
+              return _this64.ht(t);
+            });
+          }, this.H[i.invocationId] = function (t, e) {
+            e ? o.error(e) : t && (t.type === A.Completion ? t.error ? o.error(new Error(t.error)) : o.complete() : o.next(t.item));
+          }, r = this.ht(i)["catch"](function (t) {
+            o.error(t), delete _this64.H[i.invocationId];
+          }), this.ct(s, r), o;
+        }
+      }, {
+        key: "V",
+        value: function V(t) {
+          return this.Y(), this.connection.send(t);
+        }
+      }, {
+        key: "ht",
+        value: function ht(t) {
+          return this.V(this.k.writeMessage(t));
+        }
+      }, {
+        key: "send",
+        value: function send(t) {
+          for (var _len2 = arguments.length, e = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+            e[_key2 - 1] = arguments[_key2];
+          }
+
+          var _this$it3 = this.it(e),
+              _this$it4 = _slicedToArray(_this$it3, 2),
+              s = _this$it4[0],
+              n = _this$it4[1],
+              i = this.ht(this.at(t, e, !0, n));
+
+          return this.ct(s, i), i;
+        }
+      }, {
+        key: "invoke",
+        value: function invoke(t) {
+          var _this65 = this;
+
+          for (var _len3 = arguments.length, e = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+            e[_key3 - 1] = arguments[_key3];
+          }
+
+          var _this$it5 = this.it(e),
+              _this$it6 = _slicedToArray(_this$it5, 2),
+              s = _this$it6[0],
+              n = _this$it6[1],
+              i = this.at(t, e, !1, n);
+
+          return new Promise(function (t, e) {
+            _this65.H[i.invocationId] = function (s, n) {
+              n ? e(n) : s && (s.type === A.Completion ? s.error ? e(new Error(s.error)) : t(s.result) : e(new Error("Unexpected message type: ".concat(s.type))));
+            };
+
+            var n = _this65.ht(i)["catch"](function (t) {
+              e(t), delete _this65.H[i.invocationId];
+            });
+
+            _this65.ct(s, n);
+          });
+        }
+      }, {
+        key: "on",
+        value: function on(t, e) {
+          t && e && (t = t.toLowerCase(), this.D[t] || (this.D[t] = []), -1 === this.D[t].indexOf(e) && this.D[t].push(e));
+        }
+      }, {
+        key: "off",
+        value: function off(t, e) {
+          if (!t) return;
+          t = t.toLowerCase();
+          var s = this.D[t];
+          if (s) if (e) {
+            var _n9 = s.indexOf(e);
+
+            -1 !== _n9 && (s.splice(_n9, 1), 0 === s.length && delete this.D[t]);
+          } else delete this.D[t];
+        }
+      }, {
+        key: "onclose",
+        value: function onclose(t) {
+          t && this.A.push(t);
+        }
+      }, {
+        key: "onreconnecting",
+        value: function onreconnecting(t) {
+          t && this.R.push(t);
+        }
+      }, {
+        key: "onreconnected",
+        value: function onreconnected(t) {
+          t && this.U.push(t);
+        }
+      }, {
+        key: "I",
+        value: function I(t) {
+          if (this.G(), this.L || (t = this.lt(t), this.L = !0), t) {
+            var _s9 = this.k.parseMessages(t, this.u);
+
+            var _iterator4 = _createForOfIteratorHelper(_s9),
+                _step4;
+
+            try {
+              for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+                var _t20 = _step4.value;
+
+                switch (_t20.type) {
+                  case A.Invocation:
+                    this.ut(_t20);
+                    break;
+
+                  case A.StreamItem:
+                  case A.Completion:
+                    {
+                      var _s10 = this.H[_t20.invocationId];
+
+                      if (_s10) {
+                        _t20.type === A.Completion && delete this.H[_t20.invocationId];
+
+                        try {
+                          _s10(_t20);
+                        } catch (t) {
+                          this.u.log(e.Error, "Stream callback threw error: ".concat(P(t)));
+                        }
+                      }
+
+                      break;
+                    }
+
+                  case A.Ping:
+                    break;
+
+                  case A.Close:
+                    {
+                      this.u.log(e.Information, "Close message received from server.");
+
+                      var _s11 = _t20.error ? new Error("Server returned an error on close: " + _t20.error) : void 0;
+
+                      !0 === _t20.allowReconnect ? this.connection.stop(_s11) : this.tt = this.et(_s11);
+                      break;
+                    }
+
+                  default:
+                    this.u.log(e.Warning, "Invalid message type: ".concat(_t20.type, "."));
+                }
+              }
+            } catch (err) {
+              _iterator4.e(err);
+            } finally {
+              _iterator4.f();
+            }
+          }
+
+          this.K();
+        }
+      }, {
+        key: "lt",
+        value: function lt(t) {
+          var s, n;
+
+          try {
+            var _this$T$parseHandshak = this.T.parseHandshakeResponse(t);
+
+            var _this$T$parseHandshak2 = _slicedToArray(_this$T$parseHandshak, 2);
+
+            n = _this$T$parseHandshak2[0];
+            s = _this$T$parseHandshak2[1];
+          } catch (t) {
+            var _s12 = "Error parsing handshake response: " + t;
+
+            this.u.log(e.Error, _s12);
+
+            var _n10 = new Error(_s12);
+
+            throw this.J(_n10), _n10;
+          }
+
+          if (s.error) {
+            var _t21 = "Server returned handshake error: " + s.error;
+
+            this.u.log(e.Error, _t21);
+
+            var _n11 = new Error(_t21);
+
+            throw this.J(_n11), _n11;
+          }
+
+          return this.u.log(e.Debug, "Server handshake complete."), this.X(), n;
+        }
+      }, {
+        key: "Y",
+        value: function Y() {
+          this.connection.features.inherentKeepAlive || (this.C = new Date().getTime() + this.keepAliveIntervalInMilliseconds, this.Z());
+        }
+      }, {
+        key: "K",
+        value: function K() {
+          var _this66 = this;
+
+          if (!(this.connection.features && this.connection.features.inherentKeepAlive || (this.dt = setTimeout(function () {
+            return _this66.serverTimeout();
+          }, this.serverTimeoutInMilliseconds), void 0 !== this.ft))) {
+            var _t22 = this.C - new Date().getTime();
+
+            _t22 < 0 && (_t22 = 0), this.ft = setTimeout( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+              return regeneratorRuntime.wrap(function _callee5$(_context5) {
+                while (1) {
+                  switch (_context5.prev = _context5.next) {
+                    case 0:
+                      if (!(_this66.q === R.Connected)) {
+                        _context5.next = 9;
+                        break;
+                      }
+
+                      _context5.prev = 1;
+                      _context5.next = 4;
+                      return _this66.V(_this66.M);
+
+                    case 4:
+                      _context5.next = 9;
+                      break;
+
+                    case 6:
+                      _context5.prev = 6;
+                      _context5.t0 = _context5["catch"](1);
+
+                      _this66.Z();
+
+                    case 9:
+                    case "end":
+                      return _context5.stop();
+                  }
+                }
+              }, _callee5, null, [[1, 6]]);
+            })), _t22);
+          }
+        }
+      }, {
+        key: "serverTimeout",
+        value: function serverTimeout() {
+          this.connection.stop(new Error("Server timeout elapsed without receiving a message from the server."));
+        }
+      }, {
+        key: "ut",
+        value: function ut(t) {
+          var _this67 = this;
+
+          var s = this.D[t.target.toLowerCase()];
+
+          if (s) {
+            try {
+              s.forEach(function (e) {
+                return e.apply(_this67, t.arguments);
+              });
+            } catch (s) {
+              this.u.log(e.Error, "A callback for the method ".concat(t.target.toLowerCase(), " threw error '").concat(s, "'."));
+            }
+
+            if (t.invocationId) {
+              var _t23 = "Server requested a response, which is not supported in this version of the client.";
+              this.u.log(e.Error, _t23), this.tt = this.et(new Error(_t23));
+            }
+          } else this.u.log(e.Warning, "No client method with the name '".concat(t.target, "' found."));
+        }
+      }, {
+        key: "_",
+        value: function _(t) {
+          this.u.log(e.Debug, "HubConnection.connectionClosed(".concat(t, ") called while in state ").concat(this.q, ".")), this.B = this.B || t || new Error("The underlying connection was closed before the hub handshake could complete."), this.X && this.X(), this.wt(t || new Error("Invocation canceled due to the underlying connection being closed.")), this.G(), this.Z(), this.q === R.Disconnecting ? this.nt(t) : this.q === R.Connected && this.P ? this.gt(t) : this.q === R.Connected && this.nt(t);
+        }
+      }, {
+        key: "nt",
+        value: function nt(t) {
+          var _this68 = this;
+
+          if (this.j) {
+            this.q = R.Disconnected, this.j = !1, g.isBrowser && window.document.removeEventListener("freeze", this.S);
+
+            try {
+              this.A.forEach(function (e) {
+                return e.apply(_this68, [t]);
+              });
+            } catch (s) {
+              this.u.log(e.Error, "An onclose callback called with error '".concat(t, "' threw error '").concat(s, "'."));
+            }
+          }
+        }
+      }, {
+        key: "gt",
+        value: function () {
+          var _gt = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(t) {
+            var _this69 = this;
+
+            var s, n, i, r;
+            return regeneratorRuntime.wrap(function _callee6$(_context6) {
+              while (1) {
+                switch (_context6.prev = _context6.next) {
+                  case 0:
+                    s = Date.now();
+                    n = 0, i = void 0 !== t ? t : new Error("Attempting to reconnect due to a unknown error."), r = this.yt(n++, 0, i);
+
+                    if (!(null === r)) {
+                      _context6.next = 4;
+                      break;
+                    }
+
+                    return _context6.abrupt("return", (this.u.log(e.Debug, "Connection not reconnecting because the IRetryPolicy returned null on the first reconnect attempt."), void this.nt(t)));
+
+                  case 4:
+                    if (!(this.q = R.Reconnecting, t ? this.u.log(e.Information, "Connection reconnecting because of error '".concat(t, "'.")) : this.u.log(e.Information, "Connection reconnecting."), 0 !== this.R.length)) {
+                      _context6.next = 8;
+                      break;
+                    }
+
+                    try {
+                      this.R.forEach(function (e) {
+                        return e.apply(_this69, [t]);
+                      });
+                    } catch (s) {
+                      this.u.log(e.Error, "An onreconnecting callback called with error '".concat(t, "' threw error '").concat(s, "'."));
+                    }
+
+                    if (!(this.q !== R.Reconnecting)) {
+                      _context6.next = 8;
+                      break;
+                    }
+
+                    return _context6.abrupt("return", void this.u.log(e.Debug, "Connection left the reconnecting state in onreconnecting callback. Done reconnecting."));
+
+                  case 8:
+                    if (!(null !== r)) {
+                      _context6.next = 32;
+                      break;
+                    }
+
+                    this.u.log(e.Information, "Reconnect attempt number ".concat(n, " will start in ").concat(r, " ms."));
+                    _context6.next = 12;
+                    return new Promise(function (t) {
+                      _this69.st = setTimeout(t, r);
+                    });
+
+                  case 12:
+                    this.st = void 0;
+
+                    if (!(this.q !== R.Reconnecting)) {
+                      _context6.next = 15;
+                      break;
+                    }
+
+                    return _context6.abrupt("return", void this.u.log(e.Debug, "Connection left the reconnecting state during reconnect delay. Done reconnecting."));
+
+                  case 15:
+                    _context6.prev = 15;
+                    _context6.next = 18;
+                    return this.F();
+
+                  case 18:
+                    this.q = R.Connected;
+                    this.u.log(e.Information, "HubConnection reconnected successfully.");
+
+                    if (!(0 !== this.U.length)) {
+                      _context6.next = 22;
+                      break;
+                    }
+
+                    try {
+                      this.U.forEach(function (t) {
+                        return t.apply(_this69, [_this69.connection.connectionId]);
+                      });
+                    } catch (t) {
+                      this.u.log(e.Error, "An onreconnected callback called with connectionId '".concat(this.connection.connectionId, "; threw error '").concat(t, "'."));
+                    }
+
+                  case 22:
+                    return _context6.abrupt("return");
+
+                  case 25:
+                    _context6.prev = 25;
+                    _context6.t0 = _context6["catch"](15);
+
+                    if (!(this.u.log(e.Information, "Reconnect attempt failed because of error '".concat(_context6.t0, "'.")), this.q !== R.Reconnecting)) {
+                      _context6.next = 29;
+                      break;
+                    }
+
+                    return _context6.abrupt("return", (this.u.log(e.Debug, "Connection moved to the '".concat(this.q, "' from the reconnecting state during reconnect attempt. Done reconnecting.")), void (this.q === R.Disconnecting && this.nt())));
+
+                  case 29:
+                    i = _context6.t0 instanceof Error ? _context6.t0 : new Error(_context6.t0.toString()), r = this.yt(n++, Date.now() - s, i);
+
+                  case 30:
+                    _context6.next = 8;
+                    break;
+
+                  case 32:
+                    this.u.log(e.Information, "Reconnect retries have been exhausted after ".concat(Date.now() - s, " ms and ").concat(n, " failed attempts. Connection disconnecting.")), this.nt();
+
+                  case 33:
+                  case "end":
+                    return _context6.stop();
+                }
+              }
+            }, _callee6, this, [[15, 25]]);
+          }));
+
+          function gt(_x13) {
+            return _gt.apply(this, arguments);
+          }
+
+          return gt;
+        }()
+      }, {
+        key: "yt",
+        value: function yt(t, s, n) {
+          try {
+            return this.P.nextRetryDelayInMilliseconds({
+              elapsedMilliseconds: s,
+              previousRetryCount: t,
+              retryReason: n
+            });
+          } catch (n) {
+            return this.u.log(e.Error, "IRetryPolicy.nextRetryDelayInMilliseconds(".concat(t, ", ").concat(s, ") threw error '").concat(n, "'.")), null;
+          }
+        }
+      }, {
+        key: "wt",
+        value: function wt(t) {
+          var _this70 = this;
+
+          var s = this.H;
+          this.H = {}, Object.keys(s).forEach(function (n) {
+            var i = s[n];
+
+            try {
+              i(null, t);
+            } catch (s) {
+              _this70.u.log(e.Error, "Stream 'error' callback called with '".concat(t, "' threw error: ").concat(P(s)));
+            }
+          });
+        }
+      }, {
+        key: "Z",
+        value: function Z() {
+          this.ft && (clearTimeout(this.ft), this.ft = void 0);
+        }
+      }, {
+        key: "G",
+        value: function G() {
+          this.dt && clearTimeout(this.dt);
+        }
+      }, {
+        key: "at",
+        value: function at(t, e, s, n) {
+          if (s) return 0 !== n.length ? {
+            arguments: e,
+            streamIds: n,
+            target: t,
+            type: A.Invocation
+          } : {
+            arguments: e,
+            target: t,
+            type: A.Invocation
+          };
+          {
+            var _s13 = this.N;
+            return this.N++, 0 !== n.length ? {
+              arguments: e,
+              invocationId: _s13.toString(),
+              streamIds: n,
+              target: t,
+              type: A.Invocation
+            } : {
+              arguments: e,
+              invocationId: _s13.toString(),
+              target: t,
+              type: A.Invocation
+            };
+          }
+        }
+      }, {
+        key: "ct",
+        value: function ct(t, e) {
+          var _this71 = this;
+
+          if (0 !== t.length) {
+            e || (e = Promise.resolve());
+
+            var _loop3 = function _loop3(_s14) {
+              t[_s14].subscribe({
+                complete: function complete() {
+                  e = e.then(function () {
+                    return _this71.ht(_this71.bt(_s14));
+                  });
+                },
+                error: function error(t) {
+                  var n;
+                  n = t instanceof Error ? t.message : t && t.toString ? t.toString() : "Unknown error", e = e.then(function () {
+                    return _this71.ht(_this71.bt(_s14, n));
+                  });
+                },
+                next: function next(t) {
+                  e = e.then(function () {
+                    return _this71.ht(_this71.vt(_s14, t));
+                  });
+                }
+              });
+            };
+
+            for (var _s14 in t) {
+              _loop3(_s14);
+            }
+          }
+        }
+      }, {
+        key: "it",
+        value: function it(t) {
+          var e = [],
+              s = [];
+
+          for (var _n12 = 0; _n12 < t.length; _n12++) {
+            var _i14 = t[_n12];
+
+            if (this.Et(_i14)) {
+              var _r5 = this.N;
+              this.N++, e[_r5] = _i14, s.push(_r5.toString()), t.splice(_n12, 1);
+            }
+          }
+
+          return [e, s];
+        }
+      }, {
+        key: "Et",
+        value: function Et(t) {
+          return t && t.subscribe && "function" == typeof t.subscribe;
+        }
+      }, {
+        key: "rt",
+        value: function rt(t, e, s) {
+          var n = this.N;
+          return this.N++, 0 !== s.length ? {
+            arguments: e,
+            invocationId: n.toString(),
+            streamIds: s,
+            target: t,
+            type: A.StreamInvocation
+          } : {
+            arguments: e,
+            invocationId: n.toString(),
+            target: t,
+            type: A.StreamInvocation
+          };
+        }
+      }, {
+        key: "ot",
+        value: function ot(t) {
+          return {
+            invocationId: t,
+            type: A.CancelInvocation
+          };
+        }
+      }, {
+        key: "vt",
+        value: function vt(t, e) {
+          return {
+            invocationId: t,
+            item: e,
+            type: A.StreamItem
+          };
+        }
+      }, {
+        key: "bt",
+        value: function bt(t, e, s) {
+          return e ? {
+            error: e,
+            invocationId: t,
+            type: A.Completion
+          } : {
+            invocationId: t,
+            result: s,
+            type: A.Completion
+          };
+        }
+      }], [{
+        key: "create",
+        value: function create(t, e, s, n) {
+          return new N(t, e, s, n);
+        }
+      }]);
+
+      return N;
+    }();
+
+    var L = [0, 2e3, 1e4, 3e4, null];
+
+    var q = /*#__PURE__*/function () {
+      function q(t) {
+        _classCallCheck(this, q);
+
+        this.$t = void 0 !== t ? [].concat(_toConsumableArray(t), [null]) : L;
+      }
+
+      _createClass(q, [{
+        key: "nextRetryDelayInMilliseconds",
+        value: function nextRetryDelayInMilliseconds(t) {
+          return this.$t[t.previousRetryCount];
+        }
+      }]);
+
+      return q;
+    }();
+
+    var j = /*#__PURE__*/_createClass(function j() {
+      _classCallCheck(this, j);
+    });
+
+    var M, W;
+    j.Authorization = "Authorization", j.Cookie = "Cookie", function (t) {
+      t[t.None = 0] = "None", t[t.WebSockets = 1] = "WebSockets", t[t.ServerSentEvents = 2] = "ServerSentEvents", t[t.LongPolling = 4] = "LongPolling";
+    }(M || (M = {})), function (t) {
+      t[t.Text = 1] = "Text", t[t.Binary = 2] = "Binary";
+    }(W || (W = {}));
+
+    var O = /*#__PURE__*/function () {
+      function O() {
+        _classCallCheck(this, O);
+
+        this.Ct = !1, this.onabort = null;
+      }
+
+      _createClass(O, [{
+        key: "abort",
+        value: function abort() {
+          this.Ct || (this.Ct = !0, this.onabort && this.onabort());
+        }
+      }, {
+        key: "signal",
+        get: function get() {
+          return this;
+        }
+      }, {
+        key: "aborted",
+        get: function get() {
+          return this.Ct;
+        }
+      }]);
+
+      return O;
+    }();
+
+    var _F2 = /*#__PURE__*/function () {
+      function F(t, e, s, n) {
+        _classCallCheck(this, F);
+
+        this.$ = t, this.St = e, this.u = s, this.kt = new O(), this.Pt = n, this.Tt = !1, this.onreceive = null, this.onclose = null;
+      }
+
+      _createClass(F, [{
+        key: "pollAborted",
+        get: function get() {
+          return this.kt.aborted;
+        }
+      }, {
+        key: "connect",
+        value: function () {
+          var _connect = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(t, s) {
+            var _$, _$2, i, r, o, h, c, a, l;
+
+            return regeneratorRuntime.wrap(function _callee7$(_context7) {
+              while (1) {
+                switch (_context7.prev = _context7.next) {
+                  case 0:
+                    if (!(w.isRequired(t, "url"), w.isRequired(s, "transferFormat"), w.isIn(s, W, "transferFormat"), this.It = t, this.u.log(e.Trace, "(LongPolling transport) Connecting."), s === W.Binary && "undefined" != typeof XMLHttpRequest && "string" != typeof new XMLHttpRequest().responseType)) {
+                      _context7.next = 2;
+                      break;
+                    }
+
+                    throw new Error("Binary protocols over XmlHttpRequest not implementing advanced features are not supported.");
+
+                  case 2:
+                    _$ = $(), _$2 = _slicedToArray(_$, 2), i = _$2[0], r = _$2[1], o = _objectSpread(_defineProperty({}, i, r), this.Pt.headers), h = {
+                      abortSignal: this.kt.signal,
+                      headers: o,
+                      timeout: 1e5,
+                      withCredentials: this.Pt.withCredentials
+                    };
+                    s === W.Binary && (h.responseType = "arraybuffer");
+                    _context7.next = 6;
+                    return this._t();
+
+                  case 6:
+                    c = _context7.sent;
+                    this.Ht(h, c);
+                    a = "".concat(t, "&_=").concat(Date.now());
+                    this.u.log(e.Trace, "(LongPolling transport) polling: ".concat(a, "."));
+                    _context7.next = 12;
+                    return this.$.get(a, h);
+
+                  case 12:
+                    l = _context7.sent;
+                    200 !== l.statusCode ? (this.u.log(e.Error, "(LongPolling transport) Unexpected response code: ".concat(l.statusCode, ".")), this.Dt = new n(l.statusText || "", l.statusCode), this.Tt = !1) : this.Tt = !0, this.xt = this.At(this.It, h);
+
+                  case 14:
+                  case "end":
+                    return _context7.stop();
+                }
+              }
+            }, _callee7, this);
+          }));
+
+          function connect(_x14, _x15) {
+            return _connect.apply(this, arguments);
+          }
+
+          return connect;
+        }()
+      }, {
+        key: "_t",
+        value: function () {
+          var _t24 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
+            return regeneratorRuntime.wrap(function _callee8$(_context8) {
+              while (1) {
+                switch (_context8.prev = _context8.next) {
+                  case 0:
+                    if (!this.St) {
+                      _context8.next = 6;
+                      break;
+                    }
+
+                    _context8.next = 3;
+                    return this.St();
+
+                  case 3:
+                    _context8.t0 = _context8.sent;
+                    _context8.next = 7;
+                    break;
+
+                  case 6:
+                    _context8.t0 = null;
+
+                  case 7:
+                    return _context8.abrupt("return", _context8.t0);
+
+                  case 8:
+                  case "end":
+                    return _context8.stop();
+                }
+              }
+            }, _callee8, this);
+          }));
+
+          function _t() {
+            return _t24.apply(this, arguments);
+          }
+
+          return _t;
+        }()
+      }, {
+        key: "Ht",
+        value: function Ht(t, e) {
+          t.headers || (t.headers = {}), e ? t.headers[j.Authorization] = "Bearer ".concat(e) : t.headers[j.Authorization] && delete t.headers[j.Authorization];
+        }
+      }, {
+        key: "At",
+        value: function () {
+          var _At = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(t, s) {
+            var _r6, _i15, _r7;
+
+            return regeneratorRuntime.wrap(function _callee9$(_context9) {
+              while (1) {
+                switch (_context9.prev = _context9.next) {
+                  case 0:
+                    _context9.prev = 0;
+
+                  case 1:
+                    if (!this.Tt) {
+                      _context9.next = 20;
+                      break;
+                    }
+
+                    _context9.next = 4;
+                    return this._t();
+
+                  case 4:
+                    _r6 = _context9.sent;
+                    this.Ht(s, _r6);
+                    _context9.prev = 6;
+                    _i15 = "".concat(t, "&_=").concat(Date.now());
+                    this.u.log(e.Trace, "(LongPolling transport) polling: ".concat(_i15, "."));
+                    _context9.next = 11;
+                    return this.$.get(_i15, s);
+
+                  case 11:
+                    _r7 = _context9.sent;
+                    204 === _r7.statusCode ? (this.u.log(e.Information, "(LongPolling transport) Poll terminated by server."), this.Tt = !1) : 200 !== _r7.statusCode ? (this.u.log(e.Error, "(LongPolling transport) Unexpected response code: ".concat(_r7.statusCode, ".")), this.Dt = new n(_r7.statusText || "", _r7.statusCode), this.Tt = !1) : _r7.content ? (this.u.log(e.Trace, "(LongPolling transport) data received. ".concat(y(_r7.content, this.Pt.logMessageContent), ".")), this.onreceive && this.onreceive(_r7.content)) : this.u.log(e.Trace, "(LongPolling transport) Poll timed out, reissuing.");
+                    _context9.next = 18;
+                    break;
+
+                  case 15:
+                    _context9.prev = 15;
+                    _context9.t0 = _context9["catch"](6);
+                    this.Tt ? _context9.t0 instanceof i ? this.u.log(e.Trace, "(LongPolling transport) Poll timed out, reissuing.") : (this.Dt = _context9.t0, this.Tt = !1) : this.u.log(e.Trace, "(LongPolling transport) Poll errored after shutdown: ".concat(_context9.t0.message));
+
+                  case 18:
+                    _context9.next = 1;
+                    break;
+
+                  case 20:
+                    _context9.prev = 20;
+                    this.u.log(e.Trace, "(LongPolling transport) Polling complete."), this.pollAborted || this.Rt();
+                    return _context9.finish(20);
+
+                  case 23:
+                  case "end":
+                    return _context9.stop();
+                }
+              }
+            }, _callee9, this, [[0,, 20, 23], [6, 15]]);
+          }));
+
+          function At(_x16, _x17) {
+            return _At.apply(this, arguments);
+          }
+
+          return At;
+        }()
+      }, {
+        key: "send",
+        value: function () {
+          var _send2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(t) {
+            return regeneratorRuntime.wrap(function _callee10$(_context10) {
+              while (1) {
+                switch (_context10.prev = _context10.next) {
+                  case 0:
+                    return _context10.abrupt("return", this.Tt ? b(this.u, "LongPolling", this.$, this.It, this.St, t, this.Pt) : Promise.reject(new Error("Cannot send until the transport is connected")));
+
+                  case 1:
+                  case "end":
+                    return _context10.stop();
+                }
+              }
+            }, _callee10, this);
+          }));
+
+          function send(_x18) {
+            return _send2.apply(this, arguments);
+          }
+
+          return send;
+        }()
+      }, {
+        key: "stop",
+        value: function () {
+          var _stop2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
+            var _t25, _$3, _$4, _s15, _n13, _i16, _r8;
+
+            return regeneratorRuntime.wrap(function _callee11$(_context11) {
+              while (1) {
+                switch (_context11.prev = _context11.next) {
+                  case 0:
+                    this.u.log(e.Trace, "(LongPolling transport) Stopping polling."), this.Tt = !1, this.kt.abort();
+                    _context11.prev = 1;
+                    _context11.next = 4;
+                    return this.xt;
+
+                  case 4:
+                    this.u.log(e.Trace, "(LongPolling transport) sending DELETE request to ".concat(this.It, "."));
+                    _t25 = {}, _$3 = $(), _$4 = _slicedToArray(_$3, 2), _s15 = _$4[0], _n13 = _$4[1];
+                    _t25[_s15] = _n13;
+                    _i16 = {
+                      headers: _objectSpread(_objectSpread({}, _t25), this.Pt.headers),
+                      timeout: this.Pt.timeout,
+                      withCredentials: this.Pt.withCredentials
+                    };
+                    _context11.next = 10;
+                    return this._t();
+
+                  case 10:
+                    _r8 = _context11.sent;
+                    this.Ht(_i16, _r8);
+                    _context11.next = 14;
+                    return this.$["delete"](this.It, _i16);
+
+                  case 14:
+                    this.u.log(e.Trace, "(LongPolling transport) DELETE request sent.");
+
+                  case 15:
+                    _context11.prev = 15;
+                    this.u.log(e.Trace, "(LongPolling transport) Stop finished."), this.Rt();
+                    return _context11.finish(15);
+
+                  case 18:
+                  case "end":
+                    return _context11.stop();
+                }
+              }
+            }, _callee11, this, [[1,, 15, 18]]);
+          }));
+
+          function stop() {
+            return _stop2.apply(this, arguments);
+          }
+
+          return stop;
+        }()
+      }, {
+        key: "Rt",
+        value: function Rt() {
+          if (this.onclose) {
+            var _t26 = "(LongPolling transport) Firing onclose event.";
+            this.Dt && (_t26 += " Error: " + this.Dt), this.u.log(e.Trace, _t26), this.onclose(this.Dt);
+          }
+        }
+      }]);
+
+      return F;
+    }();
+
+    var B = /*#__PURE__*/function () {
+      function B(t, e, s, n) {
+        _classCallCheck(this, B);
+
+        this.$ = t, this.St = e, this.u = s, this.Pt = n, this.onreceive = null, this.onclose = null;
+      }
+
+      _createClass(B, [{
+        key: "connect",
+        value: function () {
+          var _connect2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(t, s) {
+            var _this72 = this;
+
+            var _e21;
+
+            return regeneratorRuntime.wrap(function _callee12$(_context12) {
+              while (1) {
+                switch (_context12.prev = _context12.next) {
+                  case 0:
+                    if (!(w.isRequired(t, "url"), w.isRequired(s, "transferFormat"), w.isIn(s, W, "transferFormat"), this.u.log(e.Trace, "(SSE transport) Connecting."), this.It = t, this.St)) {
+                      _context12.next = 5;
+                      break;
+                    }
+
+                    _context12.next = 3;
+                    return this.St();
+
+                  case 3:
+                    _e21 = _context12.sent;
+                    _e21 && (t += (t.indexOf("?") < 0 ? "?" : "&") + "access_token=".concat(encodeURIComponent(_e21)));
+
+                  case 5:
+                    return _context12.abrupt("return", new Promise(function (n, i) {
+                      var r,
+                          o = !1;
+
+                      if (s === W.Text) {
+                        if (g.isBrowser || g.isWebWorker) r = new _this72.Pt.EventSource(t, {
+                          withCredentials: _this72.Pt.withCredentials
+                        });else {
+                          var _e22 = _this72.$.getCookieString(t),
+                              _s16 = {};
+
+                          _s16.Cookie = _e22;
+
+                          var _$5 = $(),
+                              _$6 = _slicedToArray(_$5, 2),
+                              _n14 = _$6[0],
+                              _i17 = _$6[1];
+
+                          _s16[_n14] = _i17, r = new _this72.Pt.EventSource(t, {
+                            withCredentials: _this72.Pt.withCredentials,
+                            headers: _objectSpread(_objectSpread({}, _s16), _this72.Pt.headers)
+                          });
+                        }
+
+                        try {
+                          r.onmessage = function (t) {
+                            if (_this72.onreceive) try {
+                              _this72.u.log(e.Trace, "(SSE transport) data received. ".concat(y(t.data, _this72.Pt.logMessageContent), ".")), _this72.onreceive(t.data);
+                            } catch (t) {
+                              return void _this72.Ut(t);
+                            }
+                          }, r.onerror = function (t) {
+                            o ? _this72.Ut() : i(new Error("EventSource failed to connect. The connection could not be found on the server, either the connection ID is not present on the server, or a proxy is refusing/buffering the connection. If you have multiple servers check that sticky sessions are enabled."));
+                          }, r.onopen = function () {
+                            _this72.u.log(e.Information, "SSE connected to ".concat(_this72.It)), _this72.Nt = r, o = !0, n();
+                          };
+                        } catch (t) {
+                          return void i(t);
+                        }
+                      } else i(new Error("The Server-Sent Events transport only supports the 'Text' transfer format"));
+                    }));
+
+                  case 6:
+                  case "end":
+                    return _context12.stop();
+                }
+              }
+            }, _callee12, this);
+          }));
+
+          function connect(_x19, _x20) {
+            return _connect2.apply(this, arguments);
+          }
+
+          return connect;
+        }()
+      }, {
+        key: "send",
+        value: function () {
+          var _send3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(t) {
+            return regeneratorRuntime.wrap(function _callee13$(_context13) {
+              while (1) {
+                switch (_context13.prev = _context13.next) {
+                  case 0:
+                    return _context13.abrupt("return", this.Nt ? b(this.u, "SSE", this.$, this.It, this.St, t, this.Pt) : Promise.reject(new Error("Cannot send until the transport is connected")));
+
+                  case 1:
+                  case "end":
+                    return _context13.stop();
+                }
+              }
+            }, _callee13, this);
+          }));
+
+          function send(_x21) {
+            return _send3.apply(this, arguments);
+          }
+
+          return send;
+        }()
+      }, {
+        key: "stop",
+        value: function stop() {
+          return this.Ut(), Promise.resolve();
+        }
+      }, {
+        key: "Ut",
+        value: function Ut(t) {
+          this.Nt && (this.Nt.close(), this.Nt = void 0, this.onclose && this.onclose(t));
+        }
+      }]);
+
+      return B;
+    }();
+
+    var X = /*#__PURE__*/function () {
+      function X(t, e, s, n, i, r) {
+        _classCallCheck(this, X);
+
+        this.u = s, this.St = e, this.Lt = n, this.qt = i, this.$ = t, this.onreceive = null, this.onclose = null, this.jt = r;
+      }
+
+      _createClass(X, [{
+        key: "connect",
+        value: function () {
+          var _connect3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14(t, s) {
+            var _this73 = this;
+
+            var _e23;
+
+            return regeneratorRuntime.wrap(function _callee14$(_context14) {
+              while (1) {
+                switch (_context14.prev = _context14.next) {
+                  case 0:
+                    if (!(w.isRequired(t, "url"), w.isRequired(s, "transferFormat"), w.isIn(s, W, "transferFormat"), this.u.log(e.Trace, "(WebSockets transport) Connecting."), this.St)) {
+                      _context14.next = 5;
+                      break;
+                    }
+
+                    _context14.next = 3;
+                    return this.St();
+
+                  case 3:
+                    _e23 = _context14.sent;
+                    _e23 && (t += (t.indexOf("?") < 0 ? "?" : "&") + "access_token=".concat(encodeURIComponent(_e23)));
+
+                  case 5:
+                    return _context14.abrupt("return", new Promise(function (n, i) {
+                      var r;
+                      t = t.replace(/^http/, "ws");
+
+                      var o = _this73.$.getCookieString(t);
+
+                      var h = !1;
+
+                      if (g.isNode) {
+                        var _e24 = {},
+                            _$7 = $(),
+                            _$8 = _slicedToArray(_$7, 2),
+                            _s17 = _$8[0],
+                            _n15 = _$8[1];
+
+                        _e24[_s17] = _n15, o && (_e24[j.Cookie] = "".concat(o)), r = new _this73.qt(t, void 0, {
+                          headers: _objectSpread(_objectSpread({}, _e24), _this73.jt)
+                        });
+                      }
+
+                      r || (r = new _this73.qt(t)), s === W.Binary && (r.binaryType = "arraybuffer"), r.onopen = function (s) {
+                        _this73.u.log(e.Information, "WebSocket connected to ".concat(t, ".")), _this73.Mt = r, h = !0, n();
+                      }, r.onerror = function (t) {
+                        var s = null;
+                        s = "undefined" != typeof ErrorEvent && t instanceof ErrorEvent ? t.error : "There was an error with the transport", _this73.u.log(e.Information, "(WebSockets transport) ".concat(s, "."));
+                      }, r.onmessage = function (t) {
+                        if (_this73.u.log(e.Trace, "(WebSockets transport) data received. ".concat(y(t.data, _this73.Lt), ".")), _this73.onreceive) try {
+                          _this73.onreceive(t.data);
+                        } catch (t) {
+                          return void _this73.Ut(t);
+                        }
+                      }, r.onclose = function (t) {
+                        if (h) _this73.Ut(t);else {
+                          var _e25 = null;
+                          _e25 = "undefined" != typeof ErrorEvent && t instanceof ErrorEvent ? t.error : "WebSocket failed to connect. The connection could not be found on the server, either the endpoint may not be a SignalR endpoint, the connection ID is not present on the server, or there is a proxy blocking WebSockets. If you have multiple servers check that sticky sessions are enabled.", i(new Error(_e25));
+                        }
+                      };
+                    }));
+
+                  case 6:
+                  case "end":
+                    return _context14.stop();
+                }
+              }
+            }, _callee14, this);
+          }));
+
+          function connect(_x22, _x23) {
+            return _connect3.apply(this, arguments);
+          }
+
+          return connect;
+        }()
+      }, {
+        key: "send",
+        value: function send(t) {
+          return this.Mt && this.Mt.readyState === this.qt.OPEN ? (this.u.log(e.Trace, "(WebSockets transport) sending data. ".concat(y(t, this.Lt), ".")), this.Mt.send(t), Promise.resolve()) : Promise.reject("WebSocket is not in the OPEN state");
+        }
+      }, {
+        key: "stop",
+        value: function stop() {
+          return this.Mt && this.Ut(void 0), Promise.resolve();
+        }
+      }, {
+        key: "Ut",
+        value: function Ut(t) {
+          this.Mt && (this.Mt.onclose = function () {}, this.Mt.onmessage = function () {}, this.Mt.onerror = function () {}, this.Mt.close(), this.Mt = void 0), this.u.log(e.Trace, "(WebSockets transport) socket closed."), this.onclose && (!this.Wt(t) || !1 !== t.wasClean && 1e3 === t.code ? t instanceof Error ? this.onclose(t) : this.onclose() : this.onclose(new Error("WebSocket closed with status code: ".concat(t.code, " (").concat(t.reason || "no reason given", ")."))));
+        }
+      }, {
+        key: "Wt",
+        value: function Wt(t) {
+          return t && "boolean" == typeof t.wasClean && "number" == typeof t.code;
+        }
+      }]);
+
+      return X;
+    }();
+
+    var J = /*#__PURE__*/function () {
+      function J(t) {
+        var s = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+        _classCallCheck(this, J);
+
+        var n;
+        if (this.Ot = function () {}, this.features = {}, this.Ft = 1, w.isRequired(t, "url"), this.u = void 0 === (n = s.logger) ? new E(e.Information) : null === n ? f.instance : void 0 !== n.log ? n : new E(n), this.baseUrl = this.Bt(t), (s = s || {}).logMessageContent = void 0 !== s.logMessageContent && s.logMessageContent, "boolean" != typeof s.withCredentials && void 0 !== s.withCredentials) throw new Error("withCredentials option was not a 'boolean' or 'undefined' value");
+        s.withCredentials = void 0 === s.withCredentials || s.withCredentials, s.timeout = void 0 === s.timeout ? 1e5 : s.timeout;
+        var i = null,
+            r = null;
+
+        if (g.isNode) {
+          var _t27 = require;
+          i = _t27("ws"), r = _t27("eventsource");
+        }
+
+        g.isNode || "undefined" == typeof WebSocket || s.WebSocket ? g.isNode && !s.WebSocket && i && (s.WebSocket = i) : s.WebSocket = WebSocket, g.isNode || "undefined" == typeof EventSource || s.EventSource ? g.isNode && !s.EventSource && void 0 !== r && (s.EventSource = r) : s.EventSource = EventSource, this.$ = s.httpClient || new H(this.u), this.q = "Disconnected", this.j = !1, this.Pt = s, this.onreceive = null, this.onclose = null;
+      }
+
+      _createClass(J, [{
+        key: "start",
+        value: function () {
+          var _start = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15(t) {
+            var _t28, _t29;
+
+            return regeneratorRuntime.wrap(function _callee15$(_context15) {
+              while (1) {
+                switch (_context15.prev = _context15.next) {
+                  case 0:
+                    if (!(t = t || W.Binary, w.isIn(t, W, "transferFormat"), this.u.log(e.Debug, "Starting connection with transfer format '".concat(W[t], "'.")), "Disconnected" !== this.q)) {
+                      _context15.next = 2;
+                      break;
+                    }
+
+                    return _context15.abrupt("return", Promise.reject(new Error("Cannot start an HttpConnection that is not in the 'Disconnected' state.")));
+
+                  case 2:
+                    this.q = "Connecting";
+                    this.Xt = this.F(t);
+                    _context15.next = 6;
+                    return this.Xt;
+
+                  case 6:
+                    if (!("Disconnecting" === this.q)) {
+                      _context15.next = 12;
+                      break;
+                    }
+
+                    _t28 = "Failed to start the HttpConnection before stop() was called.";
+                    this.u.log(e.Error, _t28);
+                    _context15.next = 11;
+                    return this.tt;
+
+                  case 11:
+                    return _context15.abrupt("return", Promise.reject(new Error(_t28)));
+
+                  case 12:
+                    if (!("Connected" !== this.q)) {
+                      _context15.next = 15;
+                      break;
+                    }
+
+                    _t29 = "HttpConnection.startInternal completed gracefully but didn't enter the connection into the connected state!";
+                    return _context15.abrupt("return", (this.u.log(e.Error, _t29), Promise.reject(new Error(_t29))));
+
+                  case 15:
+                    this.j = !0;
+
+                  case 16:
+                  case "end":
+                    return _context15.stop();
+                }
+              }
+            }, _callee15, this);
+          }));
+
+          function start(_x24) {
+            return _start.apply(this, arguments);
+          }
+
+          return start;
+        }()
+      }, {
+        key: "send",
+        value: function send(t) {
+          return "Connected" !== this.q ? Promise.reject(new Error("Cannot send data if the connection is not in the 'Connected' State.")) : (this.Jt || (this.Jt = new z(this.transport)), this.Jt.send(t));
+        }
+      }, {
+        key: "stop",
+        value: function () {
+          var _stop3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(t) {
+            var _this74 = this;
+
+            return regeneratorRuntime.wrap(function _callee16$(_context16) {
+              while (1) {
+                switch (_context16.prev = _context16.next) {
+                  case 0:
+                    if (!("Disconnected" === this.q)) {
+                      _context16.next = 4;
+                      break;
+                    }
+
+                    _context16.t0 = (this.u.log(e.Debug, "Call to HttpConnection.stop(".concat(t, ") ignored because the connection is already in the disconnected state.")), Promise.resolve());
+                    _context16.next = 16;
+                    break;
+
+                  case 4:
+                    if (!("Disconnecting" === this.q)) {
+                      _context16.next = 8;
+                      break;
+                    }
+
+                    _context16.t1 = (this.u.log(e.Debug, "Call to HttpConnection.stop(".concat(t, ") ignored because the connection is already in the disconnecting state.")), this.tt);
+                    _context16.next = 15;
+                    break;
+
+                  case 8:
+                    this.q = "Disconnecting";
+                    this.tt = new Promise(function (t) {
+                      _this74.Ot = t;
+                    });
+                    _context16.next = 12;
+                    return this.et(t);
+
+                  case 12:
+                    _context16.next = 14;
+                    return this.tt;
+
+                  case 14:
+                    _context16.t1 = void _context16.sent;
+
+                  case 15:
+                    _context16.t0 = _context16.t1;
+
+                  case 16:
+                    return _context16.abrupt("return", _context16.t0);
+
+                  case 17:
+                  case "end":
+                    return _context16.stop();
+                }
+              }
+            }, _callee16, this);
+          }));
+
+          function stop(_x25) {
+            return _stop3.apply(this, arguments);
+          }
+
+          return stop;
+        }()
+      }, {
+        key: "et",
+        value: function () {
+          var _et = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17(t) {
+            return regeneratorRuntime.wrap(function _callee17$(_context17) {
+              while (1) {
+                switch (_context17.prev = _context17.next) {
+                  case 0:
+                    this.zt = t;
+                    _context17.prev = 1;
+                    _context17.next = 4;
+                    return this.Xt;
+
+                  case 4:
+                    _context17.next = 8;
+                    break;
+
+                  case 6:
+                    _context17.prev = 6;
+                    _context17.t0 = _context17["catch"](1);
+
+                  case 8:
+                    if (!this.transport) {
+                      _context17.next = 20;
+                      break;
+                    }
+
+                    _context17.prev = 9;
+                    _context17.next = 12;
+                    return this.transport.stop();
+
+                  case 12:
+                    _context17.next = 17;
+                    break;
+
+                  case 14:
+                    _context17.prev = 14;
+                    _context17.t1 = _context17["catch"](9);
+                    this.u.log(e.Error, "HttpConnection.transport.stop() threw error '".concat(_context17.t1, "'.")), this.Vt();
+
+                  case 17:
+                    this.transport = void 0;
+                    _context17.next = 21;
+                    break;
+
+                  case 20:
+                    this.u.log(e.Debug, "HttpConnection.transport is undefined in HttpConnection.stop() because start() failed.");
+
+                  case 21:
+                  case "end":
+                    return _context17.stop();
+                }
+              }
+            }, _callee17, this, [[1, 6], [9, 14]]);
+          }));
+
+          function et(_x26) {
+            return _et.apply(this, arguments);
+          }
+
+          return et;
+        }()
+      }, {
+        key: "F",
+        value: function () {
+          var _F3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee18(t) {
+            var _this75 = this;
+
+            var s, _e26, _n16;
+
+            return regeneratorRuntime.wrap(function _callee18$(_context18) {
+              while (1) {
+                switch (_context18.prev = _context18.next) {
+                  case 0:
+                    s = this.baseUrl;
+                    this.St = this.Pt.accessTokenFactory;
+                    _context18.prev = 2;
+
+                    if (!this.Pt.skipNegotiation) {
+                      _context18.next = 11;
+                      break;
+                    }
+
+                    if (!(this.Pt.transport !== M.WebSockets)) {
+                      _context18.next = 6;
+                      break;
+                    }
+
+                    throw new Error("Negotiation can only be skipped when using the WebSocket transport directly.");
+
+                  case 6:
+                    this.transport = this.Gt(M.WebSockets);
+                    _context18.next = 9;
+                    return this.Kt(s, t);
+
+                  case 9:
+                    _context18.next = 28;
+                    break;
+
+                  case 11:
+                    _e26 = null, _n16 = 0;
+
+                  case 12:
+                    _context18.next = 14;
+                    return this.Qt(s);
+
+                  case 14:
+                    _e26 = _context18.sent;
+
+                    if (!("Disconnecting" === this.q || "Disconnected" === this.q)) {
+                      _context18.next = 17;
+                      break;
+                    }
+
+                    throw new Error("The connection was stopped during negotiation.");
+
+                  case 17:
+                    if (!_e26.error) {
+                      _context18.next = 19;
+                      break;
+                    }
+
+                    throw new Error(_e26.error);
+
+                  case 19:
+                    if (!_e26.ProtocolVersion) {
+                      _context18.next = 21;
+                      break;
+                    }
+
+                    throw new Error("Detected a connection attempt to an ASP.NET SignalR Server. This client only supports connecting to an ASP.NET Core SignalR Server. See https://aka.ms/signalr-core-differences for details.");
+
+                  case 21:
+                    if (_e26.url && (s = _e26.url), _e26.accessToken) {
+                      (function () {
+                        var t = _e26.accessToken;
+
+                        _this75.St = function () {
+                          return t;
+                        };
+                      })();
+                    }
+
+                    _n16++;
+
+                  case 23:
+                    if (_e26.url && _n16 < 100) {
+                      _context18.next = 12;
+                      break;
+                    }
+
+                  case 24:
+                    if (!(100 === _n16 && _e26.url)) {
+                      _context18.next = 26;
+                      break;
+                    }
+
+                    throw new Error("Negotiate redirection limit exceeded.");
+
+                  case 26:
+                    _context18.next = 28;
+                    return this.Yt(s, this.Pt.transport, _e26, t);
+
+                  case 28:
+                    this.transport instanceof _F2 && (this.features.inherentKeepAlive = !0), "Connecting" === this.q && (this.u.log(e.Debug, "The HttpConnection connected successfully."), this.q = "Connected");
+                    _context18.next = 34;
+                    break;
+
+                  case 31:
+                    _context18.prev = 31;
+                    _context18.t0 = _context18["catch"](2);
+                    return _context18.abrupt("return", (this.u.log(e.Error, "Failed to start the connection: " + _context18.t0), this.q = "Disconnected", this.transport = void 0, this.Ot(), Promise.reject(_context18.t0)));
+
+                  case 34:
+                  case "end":
+                    return _context18.stop();
+                }
+              }
+            }, _callee18, this, [[2, 31]]);
+          }));
+
+          function F(_x27) {
+            return _F3.apply(this, arguments);
+          }
+
+          return F;
+        }()
+      }, {
+        key: "Qt",
+        value: function () {
+          var _Qt = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee19(t) {
+            var s, _t30, _$9, _$10, i, r, o, _t31, _e27, _s18;
+
+            return regeneratorRuntime.wrap(function _callee19$(_context19) {
+              while (1) {
+                switch (_context19.prev = _context19.next) {
+                  case 0:
+                    s = {};
+
+                    if (!this.St) {
+                      _context19.next = 6;
+                      break;
+                    }
+
+                    _context19.next = 4;
+                    return this.St();
+
+                  case 4:
+                    _t30 = _context19.sent;
+                    _t30 && (s[j.Authorization] = "Bearer ".concat(_t30));
+
+                  case 6:
+                    _$9 = $(), _$10 = _slicedToArray(_$9, 2), i = _$10[0], r = _$10[1];
+                    s[i] = r;
+                    o = this.Zt(t);
+                    this.u.log(e.Debug, "Sending negotiation request: ".concat(o, "."));
+                    _context19.prev = 10;
+                    _context19.next = 13;
+                    return this.$.post(o, {
+                      content: "",
+                      headers: _objectSpread(_objectSpread({}, s), this.Pt.headers),
+                      timeout: this.Pt.timeout,
+                      withCredentials: this.Pt.withCredentials
+                    });
+
+                  case 13:
+                    _t31 = _context19.sent;
+
+                    if (!(200 !== _t31.statusCode)) {
+                      _context19.next = 16;
+                      break;
+                    }
+
+                    return _context19.abrupt("return", Promise.reject(new Error("Unexpected status code returned from negotiate '".concat(_t31.statusCode, "'"))));
+
+                  case 16:
+                    _e27 = JSON.parse(_t31.content);
+                    return _context19.abrupt("return", ((!_e27.negotiateVersion || _e27.negotiateVersion < 1) && (_e27.connectionToken = _e27.connectionId), _e27));
+
+                  case 20:
+                    _context19.prev = 20;
+                    _context19.t0 = _context19["catch"](10);
+                    _s18 = "Failed to complete negotiation with the server: " + _context19.t0;
+                    return _context19.abrupt("return", (_context19.t0 instanceof n && 404 === _context19.t0.statusCode && (_s18 += " Either this is not a SignalR endpoint or there is a proxy blocking the connection."), this.u.log(e.Error, _s18), Promise.reject(new a(_s18))));
+
+                  case 24:
+                  case "end":
+                    return _context19.stop();
+                }
+              }
+            }, _callee19, this, [[10, 20]]);
+          }));
+
+          function Qt(_x28) {
+            return _Qt.apply(this, arguments);
+          }
+
+          return Qt;
+        }()
+      }, {
+        key: "te",
+        value: function te(t, e) {
+          return e ? t + (-1 === t.indexOf("?") ? "?" : "&") + "id=".concat(e) : t;
+        }
+      }, {
+        key: "Yt",
+        value: function () {
+          var _Yt = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee20(t, s, n, i) {
+            var r, o, h, a, _iterator5, _step5, _n17, _h, _t32;
+
+            return regeneratorRuntime.wrap(function _callee20$(_context20) {
+              while (1) {
+                switch (_context20.prev = _context20.next) {
+                  case 0:
+                    r = this.te(t, n.connectionToken);
+
+                    if (!this.ee(s)) {
+                      _context20.next = 7;
+                      break;
+                    }
+
+                    this.u.log(e.Debug, "Connection was provided an instance of ITransport, using that directly.");
+                    this.transport = s;
+                    _context20.next = 6;
+                    return this.Kt(r, i);
+
+                  case 6:
+                    return _context20.abrupt("return", void (this.connectionId = n.connectionId));
+
+                  case 7:
+                    o = [], h = n.availableTransports || [];
+                    a = n;
+                    _iterator5 = _createForOfIteratorHelper(h);
+                    _context20.prev = 10;
+
+                    _iterator5.s();
+
+                  case 12:
+                    if ((_step5 = _iterator5.n()).done) {
+                      _context20.next = 44;
+                      break;
+                    }
+
+                    _n17 = _step5.value;
+                    _h = this.se(_n17, s, i);
+
+                    if (!(_h instanceof Error)) {
+                      _context20.next = 19;
+                      break;
+                    }
+
+                    o.push("".concat(_n17.transport, " failed:")), o.push(_h);
+                    _context20.next = 42;
+                    break;
+
+                  case 19:
+                    if (!this.ee(_h)) {
+                      _context20.next = 42;
+                      break;
+                    }
+
+                    if (!(this.transport = _h, !a)) {
+                      _context20.next = 31;
+                      break;
+                    }
+
+                    _context20.prev = 21;
+                    _context20.next = 24;
+                    return this.Qt(t);
+
+                  case 24:
+                    a = _context20.sent;
+                    _context20.next = 30;
+                    break;
+
+                  case 27:
+                    _context20.prev = 27;
+                    _context20.t0 = _context20["catch"](21);
+                    return _context20.abrupt("return", Promise.reject(_context20.t0));
+
+                  case 30:
+                    r = this.te(t, a.connectionToken);
+
+                  case 31:
+                    _context20.prev = 31;
+                    _context20.next = 34;
+                    return this.Kt(r, i);
+
+                  case 34:
+                    return _context20.abrupt("return", void (this.connectionId = a.connectionId));
+
+                  case 37:
+                    _context20.prev = 37;
+                    _context20.t1 = _context20["catch"](31);
+
+                    if (!(this.u.log(e.Error, "Failed to start the transport '".concat(_n17.transport, "': ").concat(_context20.t1)), a = void 0, o.push(new c("".concat(_n17.transport, " failed: ").concat(_context20.t1), M[_n17.transport])), "Connecting" !== this.q)) {
+                      _context20.next = 42;
+                      break;
+                    }
+
+                    _t32 = "Failed to select transport before stop() was called.";
+                    return _context20.abrupt("return", (this.u.log(e.Debug, _t32), Promise.reject(new Error(_t32))));
+
+                  case 42:
+                    _context20.next = 12;
+                    break;
+
+                  case 44:
+                    _context20.next = 49;
+                    break;
+
+                  case 46:
+                    _context20.prev = 46;
+                    _context20.t2 = _context20["catch"](10);
+
+                    _iterator5.e(_context20.t2);
+
+                  case 49:
+                    _context20.prev = 49;
+
+                    _iterator5.f();
+
+                    return _context20.finish(49);
+
+                  case 52:
+                    return _context20.abrupt("return", o.length > 0 ? Promise.reject(new l("Unable to connect to the server with any of the available transports. ".concat(o.join(" ")), o)) : Promise.reject(new Error("None of the transports supported by the client are supported by the server.")));
+
+                  case 53:
+                  case "end":
+                    return _context20.stop();
+                }
+              }
+            }, _callee20, this, [[10, 46, 49, 52], [21, 27], [31, 37]]);
+          }));
+
+          function Yt(_x29, _x30, _x31, _x32) {
+            return _Yt.apply(this, arguments);
+          }
+
+          return Yt;
+        }()
+      }, {
+        key: "Gt",
+        value: function Gt(t) {
+          switch (t) {
+            case M.WebSockets:
+              if (!this.Pt.WebSocket) throw new Error("'WebSocket' is not supported in your environment.");
+              return new X(this.$, this.St, this.u, this.Pt.logMessageContent, this.Pt.WebSocket, this.Pt.headers || {});
+
+            case M.ServerSentEvents:
+              if (!this.Pt.EventSource) throw new Error("'EventSource' is not supported in your environment.");
+              return new B(this.$, this.St, this.u, this.Pt);
+
+            case M.LongPolling:
+              return new _F2(this.$, this.St, this.u, this.Pt);
+
+            default:
+              throw new Error("Unknown transport: ".concat(t, "."));
+          }
+        }
+      }, {
+        key: "Kt",
+        value: function Kt(t, e) {
+          var _this76 = this;
+
+          return this.transport.onreceive = this.onreceive, this.transport.onclose = function (t) {
+            return _this76.Vt(t);
+          }, this.transport.connect(t, e);
+        }
+      }, {
+        key: "se",
+        value: function se(t, s, n) {
+          var i = M[t.transport];
+          if (null == i) return this.u.log(e.Debug, "Skipping transport '".concat(t.transport, "' because it is not supported by this client.")), new Error("Skipping transport '".concat(t.transport, "' because it is not supported by this client."));
+          if (!function (t, e) {
+            return !t || 0 != (e & t);
+          }(s, i)) return this.u.log(e.Debug, "Skipping transport '".concat(M[i], "' because it was disabled by the client.")), new h("'".concat(M[i], "' is disabled by the client."), i);
+          if (!(t.transferFormats.map(function (t) {
+            return W[t];
+          }).indexOf(n) >= 0)) return this.u.log(e.Debug, "Skipping transport '".concat(M[i], "' because it does not support the requested transfer format '").concat(W[n], "'.")), new Error("'".concat(M[i], "' does not support ").concat(W[n], "."));
+          if (i === M.WebSockets && !this.Pt.WebSocket || i === M.ServerSentEvents && !this.Pt.EventSource) return this.u.log(e.Debug, "Skipping transport '".concat(M[i], "' because it is not supported in your environment.'")), new o("'".concat(M[i], "' is not supported in your environment."), i);
+          this.u.log(e.Debug, "Selecting transport '".concat(M[i], "'."));
+
+          try {
+            return this.Gt(i);
+          } catch (t) {
+            return t;
+          }
+        }
+      }, {
+        key: "ee",
+        value: function ee(t) {
+          return t && "object" == _typeof(t) && "connect" in t;
+        }
+      }, {
+        key: "Vt",
+        value: function Vt(t) {
+          var _this77 = this;
+
+          if (this.u.log(e.Debug, "HttpConnection.stopConnection(".concat(t, ") called while in state ").concat(this.q, ".")), this.transport = void 0, t = this.zt || t, this.zt = void 0, "Disconnected" !== this.q) {
+            if ("Connecting" === this.q) throw this.u.log(e.Warning, "Call to HttpConnection.stopConnection(".concat(t, ") was ignored because the connection is still in the connecting state.")), new Error("HttpConnection.stopConnection(".concat(t, ") was called while the connection is still in the connecting state."));
+
+            if ("Disconnecting" === this.q && this.Ot(), t ? this.u.log(e.Error, "Connection disconnected with error '".concat(t, "'.")) : this.u.log(e.Information, "Connection disconnected."), this.Jt && (this.Jt.stop()["catch"](function (t) {
+              _this77.u.log(e.Error, "TransportSendQueue.stop() threw error '".concat(t, "'."));
+            }), this.Jt = void 0), this.connectionId = void 0, this.q = "Disconnected", this.j) {
+              this.j = !1;
+
+              try {
+                this.onclose && this.onclose(t);
+              } catch (s) {
+                this.u.log(e.Error, "HttpConnection.onclose(".concat(t, ") threw error '").concat(s, "'."));
+              }
+            }
+          } else this.u.log(e.Debug, "Call to HttpConnection.stopConnection(".concat(t, ") was ignored because the connection is already in the disconnected state."));
+        }
+      }, {
+        key: "Bt",
+        value: function Bt(t) {
+          if (0 === t.lastIndexOf("https://", 0) || 0 === t.lastIndexOf("http://", 0)) return t;
+          if (!g.isBrowser) throw new Error("Cannot resolve '".concat(t, "'."));
+          var s = window.document.createElement("a");
+          return s.href = t, this.u.log(e.Information, "Normalizing '".concat(t, "' to '").concat(s.href, "'.")), s.href;
+        }
+      }, {
+        key: "Zt",
+        value: function Zt(t) {
+          var e = t.indexOf("?");
+          var s = t.substring(0, -1 === e ? t.length : e);
+          return "/" !== s[s.length - 1] && (s += "/"), s += "negotiate", s += -1 === e ? "" : t.substring(e), -1 === s.indexOf("negotiateVersion") && (s += -1 === e ? "?" : "&", s += "negotiateVersion=" + this.Ft), s;
+        }
+      }]);
+
+      return J;
+    }();
+
+    var z = /*#__PURE__*/function () {
+      function z(t) {
+        _classCallCheck(this, z);
+
+        this.ne = t, this.ie = [], this.re = !0, this.oe = new V(), this.he = new V(), this.ce = this.ae();
+      }
+
+      _createClass(z, [{
+        key: "send",
+        value: function send(t) {
+          return this.le(t), this.he || (this.he = new V()), this.he.promise;
+        }
+      }, {
+        key: "stop",
+        value: function stop() {
+          return this.re = !1, this.oe.resolve(), this.ce;
+        }
+      }, {
+        key: "le",
+        value: function le(t) {
+          if (this.ie.length && _typeof(this.ie[0]) != _typeof(t)) throw new Error("Expected data to be of type ".concat(_typeof(this.ie), " but was of type ").concat(_typeof(t)));
+          this.ie.push(t), this.oe.resolve();
+        }
+      }, {
+        key: "ae",
+        value: function () {
+          var _ae = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee21() {
+            var _t33, _e28;
+
+            return regeneratorRuntime.wrap(function _callee21$(_context21) {
+              while (1) {
+                switch (_context21.prev = _context21.next) {
+                  case 0:
+                    _context21.next = 2;
+                    return this.oe.promise;
+
+                  case 2:
+                    if (this.re) {
+                      _context21.next = 5;
+                      break;
+                    }
+
+                    this.he && this.he.reject("Connection stopped.");
+                    return _context21.abrupt("break", 21);
+
+                  case 5:
+                    this.oe = new V();
+                    _t33 = this.he;
+                    this.he = void 0;
+                    _e28 = "string" == typeof this.ie[0] ? this.ie.join("") : z.ue(this.ie);
+                    this.ie.length = 0;
+                    _context21.prev = 10;
+                    _context21.next = 13;
+                    return this.ne.send(_e28);
+
+                  case 13:
+                    _t33.resolve();
+
+                    _context21.next = 19;
+                    break;
+
+                  case 16:
+                    _context21.prev = 16;
+                    _context21.t0 = _context21["catch"](10);
+
+                    _t33.reject(_context21.t0);
+
+                  case 19:
+                    _context21.next = 0;
+                    break;
+
+                  case 21:
+                  case "end":
+                    return _context21.stop();
+                }
+              }
+            }, _callee21, this, [[10, 16]]);
+          }));
+
+          function ae() {
+            return _ae.apply(this, arguments);
+          }
+
+          return ae;
+        }()
+      }], [{
+        key: "ue",
+        value: function ue(t) {
+          var e = t.map(function (t) {
+            return t.byteLength;
+          }).reduce(function (t, e) {
+            return t + e;
+          }),
+              s = new Uint8Array(e);
+          var n = 0;
+
+          var _iterator6 = _createForOfIteratorHelper(t),
+              _step6;
+
+          try {
+            for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+              var _e29 = _step6.value;
+              s.set(new Uint8Array(_e29), n), n += _e29.byteLength;
+            }
+          } catch (err) {
+            _iterator6.e(err);
+          } finally {
+            _iterator6.f();
+          }
+
+          return s.buffer;
+        }
+      }]);
+
+      return z;
+    }();
+
+    var V = /*#__PURE__*/function () {
+      function V() {
+        var _this78 = this;
+
+        _classCallCheck(this, V);
+
+        this.promise = new Promise(function (t, e) {
+          var _ref12;
+
+          return _ref12 = [t, e], _this78.de = _ref12[0], _this78.fe = _ref12[1], _ref12;
+        });
+      }
+
+      _createClass(V, [{
+        key: "resolve",
+        value: function resolve() {
+          this.de();
+        }
+      }, {
+        key: "reject",
+        value: function reject(t) {
+          this.fe(t);
+        }
+      }]);
+
+      return V;
+    }();
+
+    var G = /*#__PURE__*/function () {
+      function G() {
+        _classCallCheck(this, G);
+
+        this.name = "json", this.version = 1, this.transferFormat = W.Text;
+      }
+
+      _createClass(G, [{
+        key: "parseMessages",
+        value: function parseMessages(t, s) {
+          if ("string" != typeof t) throw new Error("Invalid input for JSON hub protocol. Expected a string.");
+          if (!t) return [];
+          null === s && (s = f.instance);
+          var n = D.parse(t),
+              i = [];
+
+          var _iterator7 = _createForOfIteratorHelper(n),
+              _step7;
+
+          try {
+            for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+              var _t34 = _step7.value;
+
+              var _n18 = JSON.parse(_t34);
+
+              if ("number" != typeof _n18.type) throw new Error("Invalid payload.");
+
+              switch (_n18.type) {
+                case A.Invocation:
+                  this.pe(_n18);
+                  break;
+
+                case A.StreamItem:
+                  this.we(_n18);
+                  break;
+
+                case A.Completion:
+                  this.ge(_n18);
+                  break;
+
+                case A.Ping:
+                case A.Close:
+                  break;
+
+                default:
+                  s.log(e.Information, "Unknown message type '" + _n18.type + "' ignored.");
+                  continue;
+              }
+
+              i.push(_n18);
+            }
+          } catch (err) {
+            _iterator7.e(err);
+          } finally {
+            _iterator7.f();
+          }
+
+          return i;
+        }
+      }, {
+        key: "writeMessage",
+        value: function writeMessage(t) {
+          return D.write(JSON.stringify(t));
+        }
+      }, {
+        key: "pe",
+        value: function pe(t) {
+          this.ye(t.target, "Invalid payload for Invocation message."), void 0 !== t.invocationId && this.ye(t.invocationId, "Invalid payload for Invocation message.");
+        }
+      }, {
+        key: "we",
+        value: function we(t) {
+          if (this.ye(t.invocationId, "Invalid payload for StreamItem message."), void 0 === t.item) throw new Error("Invalid payload for StreamItem message.");
+        }
+      }, {
+        key: "ge",
+        value: function ge(t) {
+          if (t.result && t.error) throw new Error("Invalid payload for Completion message.");
+          !t.result && t.error && this.ye(t.error, "Invalid payload for Completion message."), this.ye(t.invocationId, "Invalid payload for Completion message.");
+        }
+      }, {
+        key: "ye",
+        value: function ye(t, e) {
+          if ("string" != typeof t || "" === t) throw new Error(e);
+        }
+      }]);
+
+      return G;
+    }();
+
+    var K = {
+      trace: e.Trace,
+      debug: e.Debug,
+      info: e.Information,
+      information: e.Information,
+      warn: e.Warning,
+      warning: e.Warning,
+      error: e.Error,
+      critical: e.Critical,
+      none: e.None
+    };
+
+    var Q = /*#__PURE__*/function () {
+      function Q() {
+        _classCallCheck(this, Q);
+      }
+
+      _createClass(Q, [{
+        key: "configureLogging",
+        value: function configureLogging(t) {
+          if (w.isRequired(t, "logging"), void 0 !== t.log) this.logger = t;else if ("string" == typeof t) {
+            var _e30 = function (t) {
+              var e = K[t.toLowerCase()];
+              if (void 0 !== e) return e;
+              throw new Error("Unknown log level: ".concat(t));
+            }(t);
+
+            this.logger = new E(_e30);
+          } else this.logger = new E(t);
+          return this;
+        }
+      }, {
+        key: "withUrl",
+        value: function withUrl(t, e) {
+          return w.isRequired(t, "url"), w.isNotEmpty(t, "url"), this.url = t, this.httpConnectionOptions = "object" == _typeof(e) ? _objectSpread(_objectSpread({}, this.httpConnectionOptions), e) : _objectSpread(_objectSpread({}, this.httpConnectionOptions), {}, {
+            transport: e
+          }), this;
+        }
+      }, {
+        key: "withHubProtocol",
+        value: function withHubProtocol(t) {
+          return w.isRequired(t, "protocol"), this.protocol = t, this;
+        }
+      }, {
+        key: "withAutomaticReconnect",
+        value: function withAutomaticReconnect(t) {
+          if (this.reconnectPolicy) throw new Error("A reconnectPolicy has already been set.");
+          return t ? Array.isArray(t) ? this.reconnectPolicy = new q(t) : this.reconnectPolicy = t : this.reconnectPolicy = new q(), this;
+        }
+      }, {
+        key: "build",
+        value: function build() {
+          var t = this.httpConnectionOptions || {};
+          if (void 0 === t.logger && (t.logger = this.logger), !this.url) throw new Error("The 'HubConnectionBuilder.withUrl' method must be called before building the connection.");
+          var e = new J(this.url, t);
+          return N.create(e, this.logger || f.instance, this.protocol || new G(), this.reconnectPolicy);
+        }
+      }]);
+
+      return Q;
+    }();
+
+    return Uint8Array.prototype.indexOf || Object.defineProperty(Uint8Array.prototype, "indexOf", {
+      value: Array.prototype.indexOf,
+      writable: !0
+    }), Uint8Array.prototype.slice || Object.defineProperty(Uint8Array.prototype, "slice", {
+      value: function value(t, e) {
+        return new Uint8Array(Array.prototype.slice.call(this, t, e));
+      },
+      writable: !0
+    }), Uint8Array.prototype.forEach || Object.defineProperty(Uint8Array.prototype, "forEach", {
+      value: Array.prototype.forEach,
+      writable: !0
+    }), s;
+  }();
+}, "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) && "object" == (typeof module === "undefined" ? "undefined" : _typeof(module)) ? module.exports = e() : "function" == typeof define && define.amd ? define([], e) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.signalR = e() : t.signalR = e();
 
 var Game = function (url) {
   var config = {
@@ -14151,17 +17428,13 @@ function toggleFeedback(elementId) {
 
 Game.Data = function () {
   var req = function req(url) {
-    var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-    var method = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'get';
-    return $.ajax(url, {
-      method: method,
-      data: data,
-      contentType: "application/json"
-    }).then(function (data) {
-      return data;
-    })["catch"](function (e) {
-      console.error(e.message);
-    });
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    return $.ajax(url, _objectSpread({
+      method: 'get',
+      data: false,
+      contentType: "application/json",
+      dataType: 'json'
+    }, options));
   };
 
   return {
@@ -14184,60 +17457,81 @@ Game.Model = function () {
 }();
 
 Game.Reversi = function () {
-  var configMap = {};
+  var configMap = {
+    colors: {
+      0: 'Geen',
+      1: 'Wit',
+      2: 'Zwart'
+    }
+  };
 
   var privateInit = /*#__PURE__*/function () {
-    var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(apiUrl, gameToken, afterInit) {
-      return regeneratorRuntime.wrap(function _callee$(_context) {
+    var _ref13 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee23(apiUrl) {
+      var options,
+          afterInit,
+          _args23 = arguments;
+      return regeneratorRuntime.wrap(function _callee23$(_context23) {
         while (1) {
-          switch (_context.prev = _context.next) {
+          switch (_context23.prev = _context23.next) {
             case 0:
+              options = _args23.length > 1 && _args23[1] !== undefined ? _args23[1] : {};
+              afterInit = _args23.length > 2 ? _args23[2] : undefined;
               configMap.apiUrl = apiUrl.replace(/\/$/, '');
-              configMap.gameToken = gameToken;
-              _context.next = 4;
+              configMap.gameToken = options.gameToken;
+              configMap.playerToken = options.playerToken;
+              _context23.next = 7;
               return setupGameBoard();
 
-            case 4:
+            case 7:
               registerHandlers();
+              _context23.next = 10;
+              return SetupSignalR();
+
+            case 10:
               afterInit();
 
-            case 6:
+            case 11:
             case "end":
-              return _context.stop();
+              return _context23.stop();
           }
         }
-      }, _callee);
+      }, _callee23);
     }));
 
-    return function privateInit(_x5, _x6, _x7) {
-      return _ref11.apply(this, arguments);
+    return function privateInit(_x33) {
+      return _ref13.apply(this, arguments);
     };
   }();
 
   var onMove = /*#__PURE__*/function () {
-    var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(x, y) {
-      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+    var _ref14 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee24(x, y) {
+      return regeneratorRuntime.wrap(function _callee24$(_context24) {
         while (1) {
-          switch (_context2.prev = _context2.next) {
+          switch (_context24.prev = _context24.next) {
             case 0:
-              console.log(x, y, configMap.currentGame);
-              _context2.next = 3;
-              return Game.Data.req("".concat(configMap.apiUrl, "/game/").concat(configMap.gameToken, "/move"), JSON.stringify({
-                playerToken: configMap.currentGame.player1Token,
-                x: x,
-                y: y
-              }), 'post');
+              Game.Data.req("".concat(configMap.apiUrl, "/game/").concat(configMap.gameToken, "/move"), {
+                data: JSON.stringify({
+                  playerToken: configMap.playerToken,
+                  x: x,
+                  y: y
+                }),
+                method: 'post'
+              }).then(function (data) {
+                populateBoard(data.bord);
+              })["catch"](function (e) {
+                return alert(e.responseJSON.message);
+              });
 
-            case 3:
+            case 1:
             case "end":
-              return _context2.stop();
+              return _context24.stop();
           }
         }
-      }, _callee2);
+      }, _callee24);
     }));
 
-    return function onMove(_x8, _x9) {
-      return _ref12.apply(this, arguments);
+    return function onMove(_x34, _x35) {
+      return _ref14.apply(this, arguments);
     };
   }();
 
@@ -14248,95 +17542,208 @@ Game.Reversi = function () {
       var x = (index - y) / 8;
       onMove(x, y);
     });
-    $('#skip_turn').click( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-      var a;
-      return regeneratorRuntime.wrap(function _callee3$(_context3) {
+    $('#skip_turn').click( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee25() {
+      return regeneratorRuntime.wrap(function _callee25$(_context25) {
         while (1) {
-          switch (_context3.prev = _context3.next) {
+          switch (_context25.prev = _context25.next) {
             case 0:
-              _context3.next = 2;
-              return Game.Data.req("".concat(configMap.apiUrl, "/game/").concat(configMap.gameToken, "/").concat(configMap.currentGame.player1Token, "/skip"));
+              _context25.next = 2;
+              return Game.Data.req("".concat(configMap.apiUrl, "/game/").concat(configMap.gameToken, "/").concat(configMap.currentGame.player1Token, "/skip"), {
+                beforeSend: function beforeSend() {
+                  return $('#skip_turn').addClass('loading');
+                },
+                complete: function complete() {
+                  return $('#skip_turn').removeClass('loading');
+                }
+              }).then(function (data) {
+                console.log(data);
+              })["catch"](function (e) {
+                return alert(e.responseJSON.message);
+              });
 
             case 2:
-              a = _context3.sent;
-              console.log(a);
-
-            case 4:
             case "end":
-              return _context3.stop();
+              return _context25.stop();
           }
         }
-      }, _callee3);
+      }, _callee25);
     })));
   };
 
   var setupGameBoard = /*#__PURE__*/function () {
-    var _ref14 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-      var gameData, board, i, row, j, value, nth;
-      return regeneratorRuntime.wrap(function _callee4$(_context4) {
+    var _ref16 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee26() {
+      var gameData;
+      return regeneratorRuntime.wrap(function _callee26$(_context26) {
         while (1) {
-          switch (_context4.prev = _context4.next) {
+          switch (_context26.prev = _context26.next) {
             case 0:
-              _context4.next = 2;
+              _context26.next = 2;
               return getGame();
 
             case 2:
-              gameData = _context4.sent;
+              gameData = _context26.sent;
               configMap.currentGame = gameData;
-              board = gameData.bord;
 
-              for (i in board) {
-                row = board[i];
-
-                for (j in row) {
-                  value = row[j];
-
-                  if (value > 0) {
-                    nth = parseInt(j) + parseInt(i) * 8;
-                    $("#game_board > div:eq(".concat(nth, ")")).addClass("active ".concat(value === 1 ? "white" : "black"));
-                  }
-                }
+              if (gameData.gameFinished) {
+                alert("De game is afgelopen. ".concat(gameData.gameWinner === 0 ? "Het is gelijkspel!" : configMap.colors[gameData.gameWinner] + " heeft gewonnen!"));
               }
+
+              populateBoard(gameData.bord);
 
             case 6:
             case "end":
-              return _context4.stop();
+              return _context26.stop();
           }
         }
-      }, _callee4);
+      }, _callee26);
     }));
 
     return function setupGameBoard() {
-      return _ref14.apply(this, arguments);
+      return _ref16.apply(this, arguments);
     };
   }();
 
-  var getGame = /*#__PURE__*/function () {
-    var _ref15 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
-      return regeneratorRuntime.wrap(function _callee5$(_context5) {
+  var SetupSignalR = /*#__PURE__*/function () {
+    var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee27() {
+      return regeneratorRuntime.wrap(function _callee27$(_context27) {
         while (1) {
-          switch (_context5.prev = _context5.next) {
+          switch (_context27.prev = _context27.next) {
             case 0:
-              _context5.next = 2;
-              return Game.Data.req("".concat(configMap.apiUrl, "/game/").concat(configMap.gameToken));
+              _context27.prev = 0;
+              _context27.next = 3;
+              return Game.SignalR.init("".concat(configMap.apiUrl, "/hub"), function () {
+                setupGameBoard();
+              });
+
+            case 3:
+              console.log('SignalR done!');
+              _context27.next = 9;
+              break;
+
+            case 6:
+              _context27.prev = 6;
+              _context27.t0 = _context27["catch"](0);
+              console.log('SignalR error!');
+
+            case 9:
+            case "end":
+              return _context27.stop();
+          }
+        }
+      }, _callee27, null, [[0, 6]]);
+    }));
+
+    return function SetupSignalR() {
+      return _ref17.apply(this, arguments);
+    };
+  }();
+
+  var populateBoard = function populateBoard(board) {
+    $("#game_board > div").removeClass('active white black');
+
+    for (var i in board) {
+      var row = board[i];
+
+      for (var j in row) {
+        var value = row[j];
+
+        if (value > 0) {
+          var nth = parseInt(j) + parseInt(i) * 8;
+          $("#game_board > div:eq(".concat(nth, ")")).addClass("active ".concat(value === 1 ? "white" : "black"));
+        }
+      }
+    }
+  };
+
+  var getGame = /*#__PURE__*/function () {
+    var _ref18 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee28() {
+      return regeneratorRuntime.wrap(function _callee28$(_context28) {
+        while (1) {
+          switch (_context28.prev = _context28.next) {
+            case 0:
+              _context28.next = 2;
+              return Game.Data.req("".concat(configMap.apiUrl, "/game/").concat(configMap.gameToken)).then(function (data) {
+                return data;
+              })["catch"](function (e) {
+                return alert(e.responseJSON.message);
+              });
 
             case 2:
-              return _context5.abrupt("return", _context5.sent);
+              return _context28.abrupt("return", _context28.sent);
 
             case 3:
             case "end":
-              return _context5.stop();
+              return _context28.stop();
           }
         }
-      }, _callee5);
+      }, _callee28);
     }));
 
     return function getGame() {
-      return _ref15.apply(this, arguments);
+      return _ref18.apply(this, arguments);
     };
   }();
 
   return {
     init: privateInit
+  };
+}();
+
+Game.SignalR = function () {
+  var configMap = {};
+  var connection = null;
+
+  var init = /*#__PURE__*/function () {
+    var _ref19 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee29(apiUrl, onMovementUpdate) {
+      return regeneratorRuntime.wrap(function _callee29$(_context29) {
+        while (1) {
+          switch (_context29.prev = _context29.next) {
+            case 0:
+              configMap.apiUrl = apiUrl;
+              _context29.next = 3;
+              return SetupConnection(onMovementUpdate);
+
+            case 3:
+            case "end":
+              return _context29.stop();
+          }
+        }
+      }, _callee29);
+    }));
+
+    return function init(_x36, _x37) {
+      return _ref19.apply(this, arguments);
+    };
+  }();
+
+  var SetupConnection = /*#__PURE__*/function () {
+    var _ref20 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee30(onMovementUpdate) {
+      return regeneratorRuntime.wrap(function _callee30$(_context30) {
+        while (1) {
+          switch (_context30.prev = _context30.next) {
+            case 0:
+              connection = new signalR.HubConnectionBuilder().withUrl(configMap.apiUrl, {//withCredentials: false
+              }).build();
+              connection.on("ReceiveMovementUpdate", function () {
+                onMovementUpdate();
+              });
+              _context30.next = 4;
+              return connection.start();
+
+            case 4:
+            case "end":
+              return _context30.stop();
+          }
+        }
+      }, _callee30);
+    }));
+
+    return function SetupConnection(_x38) {
+      return _ref20.apply(this, arguments);
+    };
+  }();
+
+  return {
+    init: init
   };
 }();
