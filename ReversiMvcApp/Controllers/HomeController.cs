@@ -46,7 +46,7 @@ namespace ReversiMvcApp.Controllers
             }
             
             // Player is created
-            var response = await _apiService.GetGameByPlayer(currentUserId);
+            var response = await _apiService.GetActiveGameByPlayer(currentUserId);
             Game currentGame = await response.GetData();
 
             if (currentGame.GameFinished)

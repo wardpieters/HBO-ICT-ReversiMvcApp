@@ -65,6 +65,11 @@ namespace ReversiMvcApp.Services
         {
             return await GetAs<Game>($"game/player-token/{token}");
         }
+        
+        public async Task<ResponseWrapper<Game>> GetActiveGameByPlayer(string token)
+        {
+            return await GetAs<Game>($"game/player-token/{token}/active");
+        }
 
         public async Task<ResponseWrapper<Game>> CreateGame(Game game)
         {

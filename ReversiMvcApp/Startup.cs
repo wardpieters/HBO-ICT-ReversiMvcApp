@@ -1,12 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Audit.Core;
+using Audit.WebApi;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using ReversiMvcApp.Data;
 using Microsoft.Extensions.Configuration;
@@ -28,6 +24,29 @@ namespace ReversiMvcApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc(mvc =>
+            {
+                mvc.AddAuditFilter(config => config
+                    .LogAllActions()
+                    .WithEventType("{verb}.{controller}.{action}")
+                    .IncludeHeaders(ctx => !ctx.ModelState.IsValid)
+                    .IncludeRequestBody()
+                    .IncludeModelState()
+                    .IncludeResponseBody(ctx => ctx.HttpContext.Response.StatusCode == 200));
+            });
+            
+            Audit.Core.Configuration.Setup()
+                .UseSqlServer(config => config
+                    .ConnectionString(Configuration.GetConnectionString("ReversiMvcAudit"))
+                    .Schema("dbo")
+                    .TableName("Event")
+                    .IdColumnName("EventId")
+                    .JsonColumnName("JsonData")
+                    .LastUpdatedColumnName("LastUpdatedDate")
+                    .CustomColumn("EventType", ev => ev.EventType)
+                    .CustomColumn("User", ev => ev.Environment.UserName));
+
+            
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<ReversiDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ReversiDatabase")));
             services.AddDatabaseDeveloperPageExceptionFilter();

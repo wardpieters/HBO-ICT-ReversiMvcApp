@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -11,7 +12,19 @@ namespace ReversiMvcApp.Helpers
             if (response.HasError())
             {
                 string errorMessage = await response.GetError();
-                controller.ViewBag.ErrorMessage = JsonConvert.DeserializeObject<dynamic>(errorMessage);
+
+                try
+                {
+                    controller.ViewBag.ErrorMessage = JsonConvert.DeserializeObject<dynamic>(errorMessage);
+                }
+                catch (Exception e)
+                {
+                    controller.ViewBag.ErrorMessage =
+                        JsonConvert.DeserializeObject<dynamic>("{message: 'Er is een onbekende fout opgetreden'}");
+                    Console.WriteLine(e);
+                    Console.WriteLine(errorMessage);
+                }
+                
                 return controller.View();
             }
 
@@ -23,6 +36,7 @@ namespace ReversiMvcApp.Helpers
         {
             if (response.HasError())
             {
+                Console.WriteLine(error);
                 return error;
             }
             

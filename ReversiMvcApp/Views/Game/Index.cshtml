@@ -38,8 +38,8 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Description)
                     </td>
-                    <td>
-                        <a asp-action="Details" asp-route-id="@item.Token">Join</a>
+                    <td class="text-right">
+                        <a asp-action="Details" asp-route-id="@item.Token" class="btn btn-success">Join</a>
                     </td>
                 </tr>
         }
