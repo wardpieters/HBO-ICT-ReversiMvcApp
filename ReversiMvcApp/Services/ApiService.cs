@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using ReversiMvcApp.Data;
 using ReversiMvcApp.Models;
@@ -17,12 +18,17 @@ namespace ReversiMvcApp.Services
     {
         private readonly HttpClient _client;
         public readonly string ApiUrl;
+        public readonly IConfiguration config;
 
         public ApiService(string uri)
         {
             ApiUrl = uri;
             _client = new HttpClient();
             _client.BaseAddress = new Uri(uri);
+            config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
+                .Build();
+
         }
 
         private async Task<ResponseWrapper<T>> GetAs<T>(string path)
@@ -73,6 +79,12 @@ namespace ReversiMvcApp.Services
         public async Task<ResponseWrapper<Game>> Leave(string token, string playerToken)
         {
             return await Put<Game>($"game/{token}/leave", playerToken);
+        }
+        
+        public async Task<ResponseWrapper<List<GameStatistic>>> Stats()
+        {
+            string apiToken = config.GetValue<string>("ReversiApiToken");
+            return await GetAs<List<GameStatistic>>($"stats?apiKey={apiToken}");
         }
     }
 }

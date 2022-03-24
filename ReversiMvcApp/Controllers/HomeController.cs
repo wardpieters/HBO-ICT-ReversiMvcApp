@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -57,6 +59,26 @@ namespace ReversiMvcApp.Controllers
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Stats()
+        {
+            var response = await _apiService.Stats();
+            List<GameStatistic> stats = await response.GetData();
+            
+            var playerData = _context.Players.ToList();
+
+            foreach (Player player in playerData)
+            {
+                player.GamesWon = stats.Count(x => x.GameWinnerToken == player.Guid);
+                player.GamesLost = stats.Count(x => (x.Player1Token == player.Guid || x.Player2Token == player.Guid) && !String.IsNullOrEmpty(x.GameWinnerToken) && !x.GameWinnerToken.Equals(player.Guid));
+                player.GamesDraw = stats.Count(x => (x.Player1Token == player.Guid || x.Player2Token == player.Guid) && x.GameWinnerToken == null);
+            }
+            
+            ViewBag.StatsData = stats;
+            ViewBag.PlayerData = playerData;
             return View();
         }
 
