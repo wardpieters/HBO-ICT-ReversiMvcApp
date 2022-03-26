@@ -1,0 +1,47 @@
+@using ReversiMvcApp.Helpers
+@model ApplicationUser
+@{
+    ViewData["Title"] = "Gebruiker inzien";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Gebruiker inzien</h1>
+<div class="card">
+    <div class="card-body">
+        <div class="form-group">
+            <label>Voornaam</label>
+            <input asp-for="FirstName" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Achternaam</label>
+            <input asp-for="LastName" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Gebruikersnaam</label>
+            <input asp-for="UserName" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>E-mailadres</label>
+            <input asp-for="Email" class="form-control" />
+        </div>
+        
+        <div class="form-group">
+            <label class="d-block">Tweefactorauthenticatie</label>
+            @if (Model.TwoFactorEnabled)
+            {
+                <a class="btn btn-primary" asp-controller="UserRoles" asp-action="DisableTwoFactorForUser" asp-route-userId="@Model.Id">Tweefactorauthenticatie uitschakelen</a>
+            }
+            else
+            {
+                <a class="btn btn-primary disabled">Tweefactorauthenticatie uitschakelen</a>
+            }
+        </div>
+        
+        <div class="form-group">
+            <label class="d-block">Wachtwoord</label>
+            <a class="btn btn-primary" asp-controller="UserRoles" asp-action="SendPasswordRestEmail" asp-route-userId="@Model.Id">Wachtwoord vergeten e-mail versturen</a>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a asp-action="Index" class="btn btn-primary">Terug naar overzicht</a>
+    </div>
+</div>

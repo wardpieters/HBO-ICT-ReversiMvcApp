@@ -1,0 +1,44 @@
+@model List<UserRolesViewModel>
+@{
+    ViewData["Title"] = "Gebruikersbeheer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Gebruikersbeheer</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Voornaam</th>
+            <th>Achternaam</th>
+            <th>E-mailadres</th>
+            <th>Rollen</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model) {
+            <tr>
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>@user.Email</td>
+                <td>@string.Join(", ", user.Roles.ToList())</td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="UserRoles" asp-action="ViewUser" asp-route-userId="@user.UserId">Bekijken</a>
+                    
+                    @if (User.IsInRole(Roles.Admin.ToString()))
+                    {
+                        <a class="btn btn-primary" asp-controller="UserRoles" asp-action="Manage" asp-route-userId="@user.UserId">Rollen bewerken</a>
+                    }
+                    
+                    @if (!user.Roles.Contains(Roles.Admin.ToString()))
+                    {
+                        <a class="btn btn-danger" onclick="return confirm('Weet je zeker dat je deze gebruiker wilt verwijderen?');" asp-controller="UserRoles" asp-action="DeleteUser" asp-route-userId="@user.UserId">Verwijderen</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-danger disabled" title="Je kunt geen administrators verwijderen">Verwijderen</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
