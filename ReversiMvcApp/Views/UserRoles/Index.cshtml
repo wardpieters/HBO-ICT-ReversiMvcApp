@@ -4,6 +4,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h1>Gebruikersbeheer</h1>
+
+@if (ViewBag.AlertMessage != null)
+{
+    <div>
+        <div class="alert alert-@ViewBag.AlertMessage.type">
+            <p class="mb-0">@ViewBag.AlertMessage.message</p>
+        </div>
+    </div>
+}
+
 <table class="table table-striped">
     <thead>
         <tr>

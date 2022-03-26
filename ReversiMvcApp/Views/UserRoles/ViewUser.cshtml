@@ -5,30 +5,40 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h1>Gebruiker inzien</h1>
+
+@if (ViewBag.AlertMessage != null)
+{
+    <div>
+        <div class="alert alert-@ViewBag.AlertMessage.type">
+            <p class="mb-0">@ViewBag.AlertMessage.message</p>
+        </div>
+    </div>
+}
+
 <div class="card">
     <div class="card-body">
         <div class="form-group">
             <label>Voornaam</label>
-            <input asp-for="FirstName" class="form-control" />
+            <input asp-for="FirstName" class="form-control" disabled="disabled" />
         </div>
         <div class="form-group">
             <label>Achternaam</label>
-            <input asp-for="LastName" class="form-control" />
+            <input asp-for="LastName" class="form-control" disabled="disabled" />
         </div>
         <div class="form-group">
             <label>Gebruikersnaam</label>
-            <input asp-for="UserName" class="form-control" />
+            <input asp-for="UserName" class="form-control" disabled="disabled"/>
         </div>
         <div class="form-group">
             <label>E-mailadres</label>
-            <input asp-for="Email" class="form-control" />
+            <input asp-for="Email" class="form-control" disabled="disabled"/>
         </div>
         
         <div class="form-group">
             <label class="d-block">Tweefactorauthenticatie</label>
             @if (Model.TwoFactorEnabled)
             {
-                <a class="btn btn-primary" asp-controller="UserRoles" asp-action="DisableTwoFactorForUser" asp-route-userId="@Model.Id">Tweefactorauthenticatie uitschakelen</a>
+                <a class="btn btn-primary text-white" asp-controller="UserRoles" asp-action="DisableTwoFactorForUser" asp-route-userId="@Model.Id">Tweefactorauthenticatie uitschakelen</a>
             }
             else
             {

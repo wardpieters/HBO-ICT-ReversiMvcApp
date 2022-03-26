@@ -91,5 +91,11 @@ namespace ReversiMvcApp.Services
             string apiToken = config.GetValue<string>("ReversiApiToken");
             return await GetAs<List<GameStatistic>>($"stats?apiKey={apiToken}");
         }
+        
+        public async Task<ResponseWrapper<string>> Delete(string playerToken)
+        {
+            string apiToken = config.GetValue<string>("ReversiApiToken");
+            return await GetAs<string>($"player/delete?apiKey={apiToken}&playerToken={playerToken}");
+        }
     }
 }

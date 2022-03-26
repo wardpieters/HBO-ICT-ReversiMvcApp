@@ -10,7 +10,10 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using ReversiMvcApp.Data;
 using ReversiMvcApp.Models;
+using ReversiMvcApp.Services;
 
 namespace ReversiMvcApp.Controllers
 {
@@ -20,13 +23,17 @@ namespace ReversiMvcApp.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IEmailSender _emailSender;
+        private readonly ApiService _apiService;
+        private readonly ReversiDbContext _reversiContext;
 
         public UserRolesController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager,
-            IEmailSender emailSender)
+            IEmailSender emailSender, ApiService apiService, ReversiDbContext reversiContext)
         {
             _roleManager = roleManager;
             _userManager = userManager;
             _emailSender = emailSender;
+            _apiService = apiService;
+            _reversiContext = reversiContext;
         }
 
         public async Task<IActionResult> Index()
@@ -48,6 +55,12 @@ namespace ReversiMvcApp.Controllers
                 thisViewModel.LastName = user.LastName;
                 thisViewModel.Roles = await GetUserRoles(user);
                 userRolesViewModel.Add(thisViewModel);
+            }
+
+            var tempData = TempData["AlertMessage"];
+            if (tempData != null)
+            {
+                ViewBag.AlertMessage = JsonConvert.DeserializeObject<dynamic>(tempData.ToString());    
             }
 
             return View(userRolesViewModel);
@@ -82,6 +95,12 @@ namespace ReversiMvcApp.Controllers
 
                 userRolesViewModel.Selected = await _userManager.IsInRoleAsync(user, role.Name);
                 model.Add(userRolesViewModel);
+            }
+            
+            var tempData = TempData["AlertMessage"];
+            if (tempData != null)
+            {
+                ViewBag.AlertMessage = JsonConvert.DeserializeObject<dynamic>(tempData.ToString());    
             }
 
             return View(model);
@@ -122,6 +141,12 @@ namespace ReversiMvcApp.Controllers
             {
                 return NotFound();
             }
+            
+            var tempData = TempData["AlertMessage"];
+            if (tempData != null)
+            {
+                ViewBag.AlertMessage = JsonConvert.DeserializeObject<dynamic>(tempData.ToString());    
+            }
 
             ModelState.AddModelError("", "Cannot remove user existing roles");
             return View(user);
@@ -149,19 +174,21 @@ namespace ReversiMvcApp.Controllers
                 $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>."
             );
 
+            TempData["AlertMessage"] = JsonConvert.SerializeObject(new {message = "De e-mail is verstuurd.", type = "success"});
             return RedirectToAction("ViewUser", new { userId = user.Id});
         }
 
         public async Task<IActionResult> DisableTwoFactorForUser(string userId)
         {
             var user = await _userManager.FindByIdAsync(userId);
-            if (user == null)
-            {
+            if (user == null) {
                 return NotFound();
             }
 
             user.TwoFactorEnabled = false;
             await _userManager.UpdateAsync(user);
+            
+            TempData["AlertMessage"] = JsonConvert.SerializeObject(new {message = "Tweefactorauthenticatie is uitgeschakeld.", type = "success"});
 
             return RedirectToAction("ViewUser", "UserRoles", new {userId});
         }
@@ -181,9 +208,25 @@ namespace ReversiMvcApp.Controllers
             // Prevent user from deleting their own account
             if (!user.Id.Equals(currentUserId) && !roles.Contains(Roles.Admin.ToString()))
             {
-                await _userManager.DeleteAsync(user);
+                var apiResult = await _apiService.Delete(user.Id);
+
+                if (!apiResult.HasError()) {
+                    var result = await _userManager.DeleteAsync(user);
+                    if (result.Succeeded) {
+                        var player = _reversiContext.Players.FirstOrDefault(x => x.Guid.Equals(user.Id));
+                        if (player != null)
+                        {
+                            _reversiContext.Players.Remove(player);
+                            await _reversiContext.SaveChangesAsync();
+                        }
+                        
+                        TempData["AlertMessage"] = JsonConvert.SerializeObject(new {message = "De gebruiker is succesvol verwijderd.", type = "success"});
+                        return RedirectToAction("Index");
+                    }
+                }
             }
 
+            TempData["AlertMessage"] = JsonConvert.SerializeObject(new {message = "Er is een fout opgetreden.", type = "danger"});
             return RedirectToAction("Index");
         }
     }
