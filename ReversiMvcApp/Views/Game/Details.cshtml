@@ -19,6 +19,15 @@
     return;
 }
 
+@if (ViewBag.AlertMessage != null)
+{
+    <div>
+        <div class="alert alert-@(ViewBag.AlertMessage.type ?? "danger")">
+            <p class="mb-0">@ViewBag.AlertMessage.message</p>
+        </div>
+    </div>
+}
+
 <div>
     <h4>Game</h4>
     <hr />

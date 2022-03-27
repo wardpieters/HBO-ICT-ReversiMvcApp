@@ -7,7 +7,20 @@ namespace ReversiMvcApp.Helpers
 {
     public static class ControllerExtensions
     {
-        public static async Task<IActionResult> ReturnViewOrError<T>(this Controller controller, ResponseWrapper<T> response)
+        public static async Task<IActionResult> ReturnViewOrError<T>(this Controller controller,
+            ResponseWrapper<T> response)
+        {
+            return await ReturnViewOrError(
+                controller,
+                response,
+                controller.View(),
+                controller.View(await response.GetData())
+            );
+        }
+
+        public static async Task<IActionResult> ReturnViewOrError<T>(this Controller controller,
+            ResponseWrapper<T> response,
+            IActionResult error, IActionResult success)
         {
             if (response.HasError())
             {
@@ -15,31 +28,33 @@ namespace ReversiMvcApp.Helpers
 
                 try
                 {
-                    controller.ViewBag.ErrorMessage = JsonConvert.DeserializeObject<dynamic>(errorMessage);
+                    if (error is RedirectResult)
+                    {
+                        controller.TempData["AlertMessage"] = errorMessage;
+                    } else {
+                        dynamic jsonData = JsonConvert.DeserializeObject<dynamic>(errorMessage);
+                        controller.ViewBag.ErrorMessage = jsonData;
+                    }
                 }
                 catch (Exception e)
                 {
-                    controller.ViewBag.ErrorMessage =
-                        JsonConvert.DeserializeObject<dynamic>("{message: 'Er is een onbekende fout opgetreden'}");
+                    errorMessage = "{message: 'Er is een onbekende fout opgetreden', type: 'danger'}";
+                    
+                    if (error is RedirectResult)
+                    {
+                        controller.TempData["AlertMessage"] = errorMessage;
+                    } else {
+                        dynamic jsonData = JsonConvert.DeserializeObject<dynamic>(errorMessage);
+                        controller.ViewBag.ErrorMessage = jsonData;
+                    }
+                    
                     Console.WriteLine(e);
                     Console.WriteLine(errorMessage);
                 }
-                
-                return controller.View();
-            }
 
-            return controller.View(await response.GetData());
-        }
-        
-        public static IActionResult ReturnViewOrError<T>(this Controller controller, ResponseWrapper<T> response, 
-            IActionResult error, IActionResult success)
-        {
-            if (response.HasError())
-            {
-                Console.WriteLine(error);
                 return error;
             }
-            
+
             return success;
         }
     }

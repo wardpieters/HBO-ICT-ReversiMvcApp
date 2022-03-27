@@ -1,13 +1,13 @@
 @model IEnumerable<ReversiMvcApp.Models.Game>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Games";
 }
 
-<h1>Index</h1>
+<h1>Games</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Spel aanmaken</a>
 </p>
 
 @if (ViewBag.ErrorMessage != null)
@@ -21,6 +21,15 @@
     </div>
     
     return;
+}
+
+@if (ViewBag.AlertMessage != null)
+{
+    <div>
+        <div class="alert alert-@(ViewBag.AlertMessage.type ?? "danger")">
+            <p class="mb-0">@ViewBag.AlertMessage.message</p>
+        </div>
+    </div>
 }
 
 <table class="table">

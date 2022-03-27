@@ -54,7 +54,7 @@ namespace ReversiMvcApp.Controllers
                 return Redirect("/game");
             }
 
-            return this.ReturnViewOrError(response, Redirect("/game"), Redirect($"/game/details/{currentGame.Token}") );
+            return await this.ReturnViewOrError(response, Redirect("/game"), Redirect($"/game/details/{currentGame.Token}") );
         }
 
         public IActionResult Privacy()
