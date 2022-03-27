@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Audit.Core;
 using Audit.WebApi;
@@ -74,6 +75,11 @@ namespace ReversiMvcApp
             
             services.AddSingleton(_ => new ApiService(Configuration.GetValue<string>("ReversiApiUrl")));
             services.AddTransient<IEmailSender, EmailSender>();
+            
+            services.Configure<SecurityStampValidatorOptions>(options =>
+            {
+                options.ValidationInterval = TimeSpan.FromSeconds(1);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

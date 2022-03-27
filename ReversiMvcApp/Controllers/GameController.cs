@@ -1,3 +1,4 @@
+using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -72,9 +73,17 @@ namespace ReversiMvcApp.Controllers
             {
                 game.Player1Token = User.GetId();
                 var response = await _apiService.CreateGame(game);
-                var token = (await response.GetData()).Game.Token;
+                var responseData = await response.GetData();
+                var gameResponse = responseData.Game;
+                
+                string gameToken = String.Empty;
 
-                return await this.ReturnViewOrError(response, Redirect("/game"), Redirect($"details/{token}"));
+                if (gameResponse != null)
+                {
+                    gameToken = gameResponse.Token;
+                }
+
+                return await this.ReturnViewOrError(response, Redirect("/game"), Redirect($"details/{gameToken}"));
             }
             
             return View(game);
