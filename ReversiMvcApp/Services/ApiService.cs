@@ -56,34 +56,34 @@ namespace ReversiMvcApp.Services
             return await GetAs<List<Game>>("game");
         }
 
-        public async Task<ResponseWrapper<Game>> GetGame(string token)
+        public async Task<ResponseWrapper<GameResponse>> GetGame(string token)
         {
-            return await GetAs<Game>($"game/{token}");
+            return await GetAs<GameResponse>($"game/{token}");
         }
         
-        public async Task<ResponseWrapper<Game>> GetGameByPlayer(string token)
+        public async Task<ResponseWrapper<GameResponse>> GetGameByPlayer(string token)
         {
-            return await GetAs<Game>($"game/player-token/{token}");
+            return await GetAs<GameResponse>($"game/player-token/{token}");
         }
         
-        public async Task<ResponseWrapper<Game>> GetActiveGameByPlayer(string token)
+        public async Task<ResponseWrapper<GameResponse>> GetActiveGameByPlayer(string token)
         {
-            return await GetAs<Game>($"game/player-token/{token}/active");
+            return await GetAs<GameResponse>($"game/player-token/{token}/active");
         }
 
-        public async Task<ResponseWrapper<Game>> CreateGame(Game game)
+        public async Task<ResponseWrapper<GameResponse>> CreateGame(Game game)
         {
-            return await Post<Game>("game", game);
+            return await Post<GameResponse>("game", game);
         }
 
-        public async Task<ResponseWrapper<Game>> Join(string token, string playerToken)
+        public async Task<ResponseWrapper<GameResponse>> Join(string token, string playerToken)
         {
-            return await Put<Game>($"game/{token}/join", playerToken);
+            return await Put<GameResponse>($"game/{token}/join", playerToken);
         }
         
-        public async Task<ResponseWrapper<Game>> Leave(string token, string playerToken)
+        public async Task<ResponseWrapper<GameResponse>> Leave(string token, string playerToken)
         {
-            return await Put<Game>($"game/{token}/leave", playerToken);
+            return await Put<GameResponse>($"game/{token}/leave", playerToken);
         }
         
         public async Task<ResponseWrapper<List<GameStatistic>>> Stats()

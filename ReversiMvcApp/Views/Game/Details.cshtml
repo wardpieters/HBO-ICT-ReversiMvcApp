@@ -1,10 +1,10 @@
-@model ReversiMvcApp.Models.Game
+@model ReversiMvcApp.Models.GameResponse
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Game";
 }
 
-<h1>Details</h1>
+<h1>Reversi</h1>
 
 @if (ViewBag.ErrorMessage != null)
 {
@@ -28,72 +28,78 @@
     </div>
 }
 
-<div>
-    <h4>Game</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-    </dl>
-</div>
-<div class="game-container loading">
-    <div class="spinner">
-        <div class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
+<hr />
+
+<div class="row">
+    <div class="col-12 col-lg-7 order-1 order-lg-0">
+        <div class="game-container loading">
+            <div class="spinner">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+            <div id="game_board" class="container-grid">
+                @for (int x = 1; x <= 8; x++)
+                {
+                    @for (int y = 1; y <= 8; y++)
+                    {
+                        string className;
+        
+                        if (y % 2 == 0)
+                        {
+                            if (x % 2 == 0)
+                            {
+                                className = "odd";
+                            }
+                            else
+                            {
+                                className = "even";
+                            }
+                        }
+                        else
+                        {
+                            if (x % 2 == 0)
+                            {
+                                className = "even";
+                            }
+                            else
+                            {
+                                className = "odd";
+                            }
+                        }
+        
+                        <div class="@className"></div>
+                    }
+                }
+            </div>
         </div>
     </div>
-    <div id="game_board" class="container-grid">
-        @for (int x = 1; x <= 8; x++)
-        {
-            @for (int y = 1; y <= 8; y++)
-            {
-                string className;
-
-                if (y % 2 == 0)
-                {
-                    if (x % 2 == 0)
-                    {
-                        className = "odd";
-                    }
-                    else
-                    {
-                        className = "even";
-                    }
-                }
-                else
-                {
-                    if (x % 2 == 0)
-                    {
-                        className = "even";
-                    }
-                    else
-                    {
-                        className = "odd";
-                    }
-                }
-
-                <div class="@className"></div>
-            }
-        }
+    <div class="col-12 col-lg-5 mb-3 mb-lg-0">
+        <div class="card">
+          <h5 class="card-header">@Model.Game.Description</h5>
+            <div class="card-body">
+                <h5 class="card-title" id="game_state">Laden &hellip;</h5>
+                <p class="card-text mb-0" id="game_black_count">Laden &hellip;</p>
+                <p class="card-text" id="game_white_count">Laden &hellip;</p>
+                <div class="progress">
+                  <div class="progress-bar" id="game_progressbar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="40"></div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <form asp-action="LeaveGame" method="post">
+                    <input name="token" type="hidden" value="@Model.Game.Token"/>
+                    <p id="skip_turn" class="mb-3 mb-md-0 d-inline-block btn btn-info">Beurt overslaan</p>
+                    <input id="leave_game" type="submit" value="Spel verlaten" class="btn btn-danger mb-3 mb-md-0"/>
+                </form>
+            </div>
+        </div>
     </div>
-</div>
-<div>
-    <form asp-action="LeaveGame" method="post">
-        <input name="token" type="hidden" value="@Model.Token"/>
-        <p id="skip_turn" class="mb-0 d-inline-block btn btn-info">Beurt overslaan</p>
-        <input type="submit" value="Leave" class="btn btn-danger"/>
-        <p id="game_state" class="mb-0 d-inline-block position-relative"></p>
-    </form>
 </div>
 
 <script>
 $(() => {
     Game.Reversi.init('@ViewBag.ApiUrl', {
-        gameToken: '@Model.Token',
+        gameToken: '@Model.Game.Token',
         playerToken: '@ViewBag.CurrentUserId',
     }, () => {
         $('.game-container').removeClass('loading');

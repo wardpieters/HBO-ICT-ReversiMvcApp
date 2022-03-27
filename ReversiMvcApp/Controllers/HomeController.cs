@@ -47,14 +47,17 @@ namespace ReversiMvcApp.Controllers
             
             // Player is created
             var response = await _apiService.GetActiveGameByPlayer(currentUserId);
-            Game currentGame = await response.GetData();
+            var currentGame = await response.GetData();
 
-            if (currentGame.GameFinished)
+            if (currentGame.Game != null)
             {
-                return Redirect("/game");
+                if (!currentGame.Game.GameFinished)
+                {
+                    return Redirect($"/game/details/{currentGame.Game.Token}");
+                }
             }
-
-            return await this.ReturnViewOrError(response, Redirect("/game"), Redirect($"/game/details/{currentGame.Token}") );
+            
+            return Redirect("/game");
         }
 
         public IActionResult Privacy()

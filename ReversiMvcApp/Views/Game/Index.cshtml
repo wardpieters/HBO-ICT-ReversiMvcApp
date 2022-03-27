@@ -4,11 +4,8 @@
     ViewData["Title"] = "Games";
 }
 
-<h1>Games</h1>
-
-<p>
-    <a asp-action="Create">Spel aanmaken</a>
-</p>
+<h1>Speloverzicht</h1>
+<p>Deze spellen wachten op een andere speler, join nu om samen met iemand te spelen!</p>
 
 @if (ViewBag.ErrorMessage != null)
 {
@@ -35,9 +32,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
+            <th>Naam</th>
             <th></th>
         </tr>
     </thead>
@@ -54,3 +49,5 @@
         }
     </tbody>
 </table>
+
+<a asp-action="Create" class="btn btn-info">Spel aanmaken</a>

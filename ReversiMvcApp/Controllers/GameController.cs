@@ -1,10 +1,8 @@
-using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using ReversiMvcApp.Helpers;
@@ -13,6 +11,7 @@ using ReversiMvcApp.Services;
 
 namespace ReversiMvcApp.Controllers
 {
+    [Authorize]
     public class GameController : Controller
     {
         private readonly ApiService _apiService;
@@ -39,7 +38,7 @@ namespace ReversiMvcApp.Controllers
         }
 
         // GET: Game/Details/5
-        [Authorize]
+        
         public async Task<IActionResult> Details(string id)
         {
             if (id == null) return NotFound();
@@ -55,7 +54,7 @@ namespace ReversiMvcApp.Controllers
         }
 
         // GET: Game/Create
-        [Authorize]
+        
         public IActionResult Create()
         {
             return View();
@@ -65,7 +64,7 @@ namespace ReversiMvcApp.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
+        
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Description")] Game game)
         {
@@ -73,7 +72,7 @@ namespace ReversiMvcApp.Controllers
             {
                 game.Player1Token = User.GetId();
                 var response = await _apiService.CreateGame(game);
-                var token = (await response.GetData()).Token;
+                var token = (await response.GetData()).Game.Token;
 
                 return await this.ReturnViewOrError(response, Redirect("/game"), Redirect($"details/{token}"));
             }
@@ -82,6 +81,7 @@ namespace ReversiMvcApp.Controllers
         }
 
         [HttpPost("/game/leave")]
+        
         public async Task<IActionResult> LeaveGame([FromForm] string token)
         {
             if (string.IsNullOrEmpty(token)) return BadRequest("Missing fields");
