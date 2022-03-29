@@ -149,7 +149,7 @@ namespace ReversiMvcApp.Areas.Identity.Pages.Account.Manage
         {
             return string.Format(
                 AuthenticatorUriFormat,
-                _urlEncoder.Encode("ReversiMvcApp"),
+                _urlEncoder.Encode("Reversi"),
                 _urlEncoder.Encode(email),
                 unformattedKey);
         }
