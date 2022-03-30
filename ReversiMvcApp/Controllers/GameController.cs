@@ -28,12 +28,17 @@ namespace ReversiMvcApp.Controllers
         public async Task<IActionResult> Index()
         {
             var response = await _apiService.GetEmptyGames();
-            
-            var tempData = TempData["AlertMessage"];
-            if (tempData != null)
+
+            try
             {
-                ViewBag.AlertMessage = JsonConvert.DeserializeObject<dynamic>(tempData.ToString());    
+                var tempData = TempData["AlertMessage"];
+                if (tempData != null)
+                {
+                    Console.WriteLine(tempData.ToString());
+                    ViewBag.AlertMessage = JsonConvert.DeserializeObject<dynamic>(tempData.ToString());    
+                }
             }
+            catch (Exception e) {}
 
             return await this.ReturnViewOrError(response);
         }

@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using ReversiMvcApp.Helpers;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -9,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
-using ReversiMvcApp.Data;
 using ReversiMvcApp.Models;
 
 namespace ReversiMvcApp.Services
@@ -28,7 +25,6 @@ namespace ReversiMvcApp.Services
             config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
                 .Build();
-
         }
 
         private async Task<ResponseWrapper<T>> GetAs<T>(string path)
