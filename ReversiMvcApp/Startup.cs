@@ -5,6 +5,7 @@ using Audit.WebApi;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using ReversiMvcApp.Data;
@@ -38,7 +39,7 @@ namespace ReversiMvcApp
                     .IncludeModelState()
                     .IncludeResponseBody(ctx => ctx.HttpContext.Response.StatusCode == 200));
             });
-            
+
             Audit.Core.Configuration.Setup()
                 .UseSqlServer(config => config
                     .ConnectionString(Configuration.GetConnectionString("ReversiMvcAudit"))
@@ -50,8 +51,10 @@ namespace ReversiMvcApp
                     .CustomColumn("EventType", ev => ev.EventType)
                     .CustomColumn("User", ev => ev.Environment.UserName));
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(Configuration.GetConnectionString("ReversiMvcIdentity")));
-            services.AddDbContext<ReversiDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ReversiMvcDb")));
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("ReversiMvcIdentity")));
+            services.AddDbContext<ReversiDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("ReversiMvcDb")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
@@ -72,10 +75,10 @@ namespace ReversiMvcApp
                 .AddDefaultTokenProviders();
 
             services.AddControllersWithViews();
-            
+
             services.AddSingleton(_ => new ApiService(Configuration.GetValue<string>("ReversiApiUrl")));
             services.AddTransient<IEmailSender, EmailSender>();
-            
+
             services.Configure<SecurityStampValidatorOptions>(options =>
             {
                 options.ValidationInterval = TimeSpan.FromSeconds(1);
@@ -83,7 +86,8 @@ namespace ReversiMvcApp
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
+            UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -104,6 +108,11 @@ namespace ReversiMvcApp
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseCookiePolicy(new CookiePolicyOptions
+                {
+                    Secure = CookieSecurePolicy.Always
+                });
 
             app.UseEndpoints(endpoints =>
             {

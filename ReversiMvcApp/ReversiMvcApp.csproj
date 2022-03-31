@@ -26,4 +26,12 @@
       <Content Remove="wwwroot\wwwroot.zip" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Player\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Player\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Player\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Player\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Player\Index.cshtml" />
+    </ItemGroup>
+
 </Project>

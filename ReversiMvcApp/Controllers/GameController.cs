@@ -38,7 +38,7 @@ namespace ReversiMvcApp.Controllers
                     ViewBag.AlertMessage = JsonConvert.DeserializeObject<dynamic>(tempData.ToString());    
                 }
             }
-            catch (Exception e) {}
+            catch (Exception) {}
 
             return await this.ReturnViewOrError(response);
         }
