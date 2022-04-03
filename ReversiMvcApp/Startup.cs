@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using ReversiMvcApp.Data;
@@ -62,10 +63,10 @@ namespace ReversiMvcApp
                     options.SignIn.RequireConfirmedAccount = true;
 
                     // Password requirements
-                    options.Password.RequireDigit = true;
-                    options.Password.RequireUppercase = true;
-                    options.Password.RequireLowercase = true;
-                    options.Password.RequireNonAlphanumeric = true;
+                    options.Password.RequireDigit = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
 
                     // Unique email for every user
                     options.User.RequireUniqueEmail = true;
@@ -78,6 +79,11 @@ namespace ReversiMvcApp
 
             services.AddSingleton(_ => new ApiService(Configuration.GetValue<string>("ReversiApiUrl")));
             services.AddTransient<IEmailSender, EmailSender>();
+            
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+            });
 
             services.Configure<SecurityStampValidatorOptions>(options =>
             {
@@ -89,6 +95,8 @@ namespace ReversiMvcApp
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
             UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
+            app.UseForwardedHeaders();
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
