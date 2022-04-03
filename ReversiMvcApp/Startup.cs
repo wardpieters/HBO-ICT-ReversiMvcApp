@@ -67,9 +67,14 @@ namespace ReversiMvcApp
                     options.Password.RequireUppercase = false;
                     options.Password.RequireLowercase = false;
                     options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequiredLength = 12;
 
                     // Unique email for every user
                     options.User.RequireUniqueEmail = true;
+                    
+                    // Lockout rules
+                    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                    options.Lockout.MaxFailedAccessAttempts = 3;
                 })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultUI()
